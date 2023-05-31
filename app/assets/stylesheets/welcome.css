@@ -1,0 +1,25 @@
+.welcome-grid {
+    display: grid;
+    grid-template-areas:
+        'header'
+        'main'
+        'footer';
+    background-color: #efefef;
+    width: 90%;
+    height: 500px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 0.5rem 0.5rem;
+ }
+
+ .welcome-grid-title {
+    grid-area: header;
+    font-size: larger;
+    margin-left: 50px;
+ }
+
+ .welcome-main {
+    grid-area: main;
+    padding: 20px;
+ }

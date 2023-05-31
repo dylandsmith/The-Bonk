@@ -1,0 +1,28 @@
+<div>
+    <%= form_with class: 'sign-in-grid', url: sign_in_path do |f| %>
+        <div class="sign-in-title">
+            &nbsp;Sign In
+        </div>
+        <div class="email-icon"><%= fa_icon 'user lg', class: 'icon'%></div>
+        <div class="sign-in-email-form">
+            <%= f.text_field :email, placeholder: 'your.email@email.com' %>
+        </div>
+        <div class="sign-in-email-label"></div>
+
+        <div class="password-icon"><%= fa_icon 'lock lg', class: 'icon'%></div>
+        <div class="sign-in-password-form">
+            <%= f.text_field :password, placeholder: 'Password' %>
+        </div>
+        <div class="sign-in-password-label"></div>
+
+        <div class=""><%#= fa_icon 'lock lg', class: 'icon'%></div>
+        <div class="sign-in-pass-conf-form">
+            <%#= f.text_field :password_confirmation, placeholder: 'Password Confirmation' %>
+        </div>
+
+        <div class="submit-btn-left"></div>
+        <div class="submit-btn">
+            <%= f.submit 'Login' %>
+        </div>
+    <% end %>
+</div>

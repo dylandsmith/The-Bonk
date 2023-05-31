@@ -1,0 +1,2 @@
+class Flop < Movie
+end

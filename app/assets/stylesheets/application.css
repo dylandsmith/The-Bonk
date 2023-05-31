@@ -1,0 +1,105 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require font-awesome
+ */
+
+ body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #676767;
+    background-color: rgb(156, 175, 169);
+    margin: 0;
+ }
+
+ .main-nav {
+    display: grid;
+    grid-template-areas: 
+    'logo user sign_up login';
+    grid-template-rows: 150px;
+    grid-template-columns: auto 55% auto auto;
+    width: 100%;
+    height: 125px;
+    background-color: rgb(32, 56, 48);
+ }
+
+ .main-logo {
+    grid-area: logo;
+    color:  rgb(154, 183, 174);
+ }
+
+ .lgged-in-user {
+    grid-area: user;
+    text-align: center;
+ }
+
+ .logged-in-user span {
+    display: block;
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 10px 100px 20px 100px;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+ }
+
+ .main-sign-up {
+    grid-area: sign_up;
+    color:  rgb(154, 183, 174);
+    float: right;
+ }
+
+ .main-login {
+    grid-area: login;
+    color:  rgb(154, 183, 174);
+    float: left;
+ }
+
+ .resize-image {
+    object-fit: contain;
+    /* object-position: 50% 49%;
+    height: 360px; */
+ }
+
+ .links {
+    text-decoration: none;
+    padding: 10px 50px;
+    background-color: coral;
+    color: rgb(254, 209, 193);
+    border: 1px solid rgb(155, 64, 30);
+    border-radius: 0.25rem 0.25rem;
+    margin: 0;
+    position: relative;
+    top: 45px;
+    /* transform: translate(-50%, -50%); */
+ }
+
+ .links-right {
+    float: right;
+ }
+
+ .links-left {
+    float: left;
+ }
+
+ .links-left-btn {
+    top: 52px !important;
+    font-size: 18px;
+    padding: 9.5px 50px;
+ }
+
+ .links:hover {
+    color: rgb(155, 64, 30);
+    cursor: pointer;
+}

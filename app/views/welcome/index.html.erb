@@ -1,0 +1,15 @@
+<div class="welcome-grid">
+    <section class="welcome-grid-title">
+        <% if Current.user %>
+            <span>    
+            Logged in as: <%= Current.user.email %>
+            </span>
+        <% end %>
+    </section>
+    <section class="welcome-main">
+        <p>The road to hell is paved with good intentions. While film makers strive to create masterpieces, 
+        often the film's gross profits fall well below what it took took make and advertise the film.</p>
+    </section>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+</div>

@@ -1,0 +1,143 @@
+.sign-in-grid {
+    display: grid;
+    grid-template-areas:
+        'header header header'
+        'email_icon email email_label'
+        'password_icon password password_label'
+        'pass_conf_icon pass_conf pass_conf_label'
+        'submit_left submit_left submit';
+        grid-template-columns: 49px auto auto;
+    background-color: #000000;
+    padding: 10px;
+    width: 50%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 200px;
+}
+
+.sign-in-title {
+    grid-area: header;
+    height: 300px;
+    background-image: url('gandolff.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.sign-in-email-label {
+    grid-area: email_label;
+}
+
+.sign-in-email-form {
+    grid-area: email;
+    height: 50px;
+    width: 100%;
+}
+
+.sign-in-email-form input, .sign-in-password-form input, .sign-in-pass-conf-form input {
+    background-color:rgb(39, 38, 38);
+    width: 100%;
+    height: 45px;
+    font-size: 16px;
+    border: 1px solid transparent;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-top-right-radius: 0.25rem !important;
+    border-bottom-right-radius: 0.25rem !important;
+    outline: none;
+    color: #ababab;
+}
+
+.sign-in-password-label {
+    grid-area: password_label;
+}
+
+.sign-in-password-form {
+    grid-area: password;
+    height: 50px;
+    width: 100%;
+}
+
+.sign-in-pass-conf-label {
+    grid-area: pass_conf_label;
+}
+
+.sign-in-pass-conf-form {
+    grid-area: pass_conf;
+    height: 50px;
+    width: 100%;
+}
+
+.submit-btn-left {
+    grid-area: submit_left;
+    height: 5px !important;
+}
+.submit-btn {
+    grid-area: submit;
+    height: 5px !important;
+    width: 100%;
+}
+
+.submit-btn input {
+    position: relative;
+    top: -30px;
+    left: 40%;
+    margin: 0 auto;
+    border: 1px solid coral;
+    border-radius: 0.25rem !important;
+    padding: 20px 50px 20px 50px;
+    background-color: coral;
+    color: rgb(254, 209, 193);
+    font-size: x-large;
+}
+
+.submit-btn input:hover {
+    color: rgb(155, 64, 30);
+    cursor: pointer;
+}
+
+.email-icon {
+    grid-area: email_icon;
+    top: 49px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 49px;
+    height: 49px;
+    background-color: rgb(23, 22, 22);
+    border-radius: 0.25rem 0 0 0.25rem;
+    text-align: center;
+}
+
+.password-icon {
+    grid-area: password_icon;
+    top: 49px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 49px;
+    height: 49px;
+    background-color: rgb(23, 22, 22);
+    border-radius: 0.25rem 0 0 0.25rem;
+    text-align: center;
+}
+
+.pass-conf-icon {
+    grid-area: pass_conf_icon;
+    top: 49px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 49px;
+    height: 49px;
+    background-color: rgb(23, 22, 22);
+    border-radius: 0.25rem 0 0 0.25rem;
+    text-align: center;
+}
+
+.icon {
+    line-height: 2.4 !important;
+}
