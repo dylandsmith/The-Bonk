@@ -1,0 +1,11 @@
+<div class="user-title-bar">
+  <% if Current.user %>
+    <span>
+      <p class="notice"><%= notice %></p> 
+      Logged in as: <%= Current.user.email %>
+    </span>
+  <% else %>
+    <p class="alert"><%= alert %></p>
+  <% end %>
+</div>
+

@@ -1,0 +1,42 @@
+.container {
+  background-color: #efefef;
+  width: 90%;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 0.5rem 0.5rem;
+  padding: 20px;
+}
+
+.main-grid {
+  display: grid;
+  grid-template-areas: 
+  'left right';
+  grid-template-columns: 75% auto;
+}
+
+.movie-grid {
+  display: grid;
+  /* grid-template-areas: 
+    'poster title'
+    'poster movie-meta'
+    'poster plot'; */
+  grid-template-areas: 'poster video';
+  grid-template-columns: 500px auto;
+}
+
+.poster {
+  grid-area: poster;
+}
+
+.poster img {
+  max-height: 700px;
+}
+
+.video {
+  grid-area: video;
+}
+
+.title {
+  grid-area: title;
+}

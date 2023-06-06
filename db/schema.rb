@@ -26,6 +26,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_30_215840) do
     t.string "year_released"
     t.integer "budget"
     t.float "worldwide_gross"
+    t.string "imdb_id"
+    t.string "description"
+    t.string "content_rating"
+    t.integer "movie_length"
+    t.float "rating"
+    t.string "trailer"
+    t.string "plot"
+    t.string "banner"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

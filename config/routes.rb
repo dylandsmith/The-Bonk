@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'movie/index'
+  get 'movie/new'
+  get 'movie/show'
+  get 'movie/edit'
+  get 'movie/update'
+  get 'movie/delete'
   # get 'password/edit'
   # get 'password/update'
   # get 'session/new'

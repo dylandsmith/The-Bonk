@@ -1,0 +1,17 @@
+<div class="container main-grid">
+  <div class="left">
+    <div class="movie-grid">
+    <section class="poster">
+      <%= image_tag @movie_stuff["banner"] %>
+    </section>
+    <section class="video">
+      <iframe title="<%= @movie_stuff['title'] %>" src="<%= @movie_stuff['trailer'] %>" width="900" height="700">
+        
+      </iframe>
+    </section>
+  </div>
+  </div>
+  <div class="right">
+    <%= render 'shared/user_panel' %>
+  </div>
+</div>

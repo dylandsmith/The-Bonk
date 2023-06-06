@@ -1,0 +1,8 @@
+.user-title-bar {
+  background-color: black;
+  color: white;
+  padding: 5px;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  font-size: small;
+}

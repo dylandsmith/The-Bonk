@@ -1,16 +1,17 @@
 .welcome-grid {
     display: grid;
     grid-template-areas:
-        'header'
-        'main'
-        'footer';
+        'header header'
+        'main user_info'
+        'footer footer';
+    grid-template-columns: 75% auto;
     background-color: #efefef;
     width: 90%;
-    height: 500px;
     margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
     border-radius: 0.5rem 0.5rem;
+    padding: 20px;
  }
 
  .welcome-grid-title {
@@ -21,5 +22,68 @@
 
  .welcome-main {
     grid-area: main;
-    padding: 20px;
+    padding-right: 20px;
+ }
+
+ .user_info {
+  grid-area: user_info;
+  height: 400px;
+  background-color: #d1d1d1;
+  border-radius: 0.5rem 0.5rem;
+ }
+
+ .table-back-drop {
+  background-color: #2b3035;
+  padding: 10px;
+ }
+
+ .table {
+  min-width: 1000px !important;
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+ }
+
+ .table thead th {
+  border: none;
+  padding: 20px 30px;
+  font-size: 14px;
+  color: #fff;
+  border-bottom: 4px solid #2b3035;
+  text-align: left;
+ }
+
+ .table tbody th, .table tbody td {
+  border: none;
+  padding: 20px 30px;
+  border-bottom: 3px solid #2b3035;
+  font-size: 14px;
+  color: white;
+ }
+
+ .table tbody tr:hover {
+  background-color: #5b6f65;
+ }
+
+ .table-dark {
+  color: #efefef;
+  background-color: #343a40;
+ }
+
+ .table-dark, .table-dark > th, .table-dark > td {
+  background-color: #454d55;
+ }
+
+ .film-link {
+  text-decoration: none;
+  color: white;
+ }
+
+ .film-link:hover {
+  color: rgb(192, 191, 191);
+ }
+
+ .icon {
+  font-size: 20px !important;
+  line-height: 0.6 !important;
  }
