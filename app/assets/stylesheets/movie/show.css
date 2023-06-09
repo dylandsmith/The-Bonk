@@ -12,29 +12,45 @@
   display: grid;
   grid-template-areas: 
   'left right';
-  grid-template-columns: 75% auto;
+  grid-template-columns: 35% auto;
 }
 
-.movie-grid {
+/* .movie-grid {
   display: grid;
-  /* grid-template-areas: 
+  grid-template-areas: 
     'poster title'
     'poster movie-meta'
-    'poster plot'; */
+    'poster plot';
   grid-template-areas: 'poster video';
   grid-template-columns: 500px auto;
-}
+}*/
 
 .poster {
-  grid-area: poster;
+  grid-area: left;
 }
 
 .poster img {
   max-height: 700px;
-}
+} 
 
 .video {
-  grid-area: video;
+  grid-area: right;
+  position: relative;
+  overflow: hidden;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  width: 100%;
+  height: 0;
+}
+
+.video-frame {
+  border: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .title {

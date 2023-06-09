@@ -1,9 +1,10 @@
 <div class="welcome-grid">
     <section class="welcome-grid-title">
-
+      <%= render 'movie/search_movies' %>
     </section>
     <section class="welcome-main">
       <% if Current.user %>
+        
         <div class="table-back-drop">
           <table class="table table-dark">
             <thead>

@@ -32,9 +32,5 @@ class MovieController < ApplicationController
 
   def delete
   end
+
 end
-
-
-
-
-# puts response.read_body

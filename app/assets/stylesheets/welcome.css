@@ -16,8 +16,6 @@
 
  .welcome-grid-title {
     grid-area: header;
-    font-size: larger;
-    margin-left: 50px;
  }
 
  .welcome-main {

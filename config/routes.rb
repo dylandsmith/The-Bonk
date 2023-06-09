@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   get 'movie/edit'
   get 'movie/update'
   get 'movie/delete'
+
+  get '/search_movie', to: 'welcome#search_movies', as: 'search_movies'
+  get '/clear_search', to: 'welcome#clear_search', as: 'clear_search'
   # get 'password/edit'
   # get 'password/update'
   # get 'session/new'
