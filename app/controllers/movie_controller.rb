@@ -20,6 +20,7 @@ class MovieController < ApplicationController
     request["X-RapidAPI-Host"] = 'moviesminidatabase.p.rapidapi.com'
 
     response = http.request(request)
+
     @movie_stuff = JSON.parse(response.body)["results"] ? JSON.parse(response.body)["results"] : nil
     # binding.pry
   end

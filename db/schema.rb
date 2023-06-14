@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_30_215840) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_12_043409) do
+  create_table "comments", force: :cascade do |t|
+    t.string "text"
+    t.bigint "user_id"
+    t.bigint "commentable_id"
+    t.string "commentable_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
+  end
+
   create_table "currents", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -36,6 +46,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_30_215840) do
     t.string "banner"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "popular_flops", force: :cascade do |t|
+    t.integer "movie_id"
+    t.integer "user_id"
+    t.integer "rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["movie_id"], name: "index_popular_flops_on_movie_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -2,12 +2,18 @@ class WelcomeController < ApplicationController
 
   @@search_results = []
 
+  before_action :get_popular_flops
+  
   def index
     if @@search_results.empty?
       @movies = Movie.all
     else
       @movies = @@search_results
     end
+  end
+
+  def get_popular_flops
+    @popular_flops = PopularFlop.popular_flops
   end
 
   def search_movies

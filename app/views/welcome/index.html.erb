@@ -1,10 +1,11 @@
 <div class="welcome-grid">
     <section class="welcome-grid-title">
+    <% if Current.user %>
       <%= render 'movie/search_movies' %>
+    <% end %>
     </section>
     <section class="welcome-main">
       <% if Current.user %>
-        
         <div class="table-back-drop">
           <table class="table table-dark">
             <thead>
@@ -35,10 +36,45 @@
           </table>
         </div>
       <% else %>
+        <article>
         <p>The road to hell is paved with good intentions. While film makers strive to create masterpieces, 
-        often the film's gross profits fall well below what it took took make and advertise the film. That doesn't mean that the film is bad.</p>
+        often the film's gross profits fall well below what it took to make and advertise the film. That doesn't mean that the film is bad.</p>
         <p>Many cult classics were box office flops. Some films went on to make more money in video/streaming services. 
         Word of mouth can give a film new legs and sometimes it just takes a while for a film to build an audience.</p>
+        </article>
+
+        <span class="table-caption">Current Popular Flops</span>
+        <hr>
+        <br>
+        <div class="table-back-drop">
+          <table class="table table-dark">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Year</th>
+                <th> Estimated Budget</th>
+                <th>Worldwide Gross</th>
+                <th>Details</th>
+              </tr>
+            </thead>
+            <tbody>
+            <% @popular_flops.each do |movie| %>
+              <tr>
+                <td><%= movie.title %></td>
+                <td><%= movie.year_released %></td>
+                <td><%= movie.budget %></td>
+                <td><%= movie.worldwide_gross %></td>
+                <td><% if movie.imdb_id %>
+                      <%= link_to movie_show_path(movie_id: movie.id), class: 'film-link' do %>
+                        <%= fa_icon 'film', class: 'icon'%>
+                      <% end %>
+                    <% end %>
+                </td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
       <% end %>
     </section>
     <section class="user_info">
