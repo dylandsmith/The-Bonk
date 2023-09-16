@@ -15,6 +15,29 @@
   grid-template-columns: 35% auto;
 }
 
+.right-grid {
+  display: grid;
+  grid-template-areas: 
+  'top'
+  'bottom';
+  grid-template-columns: 100%;
+  grid-template-rows: auto 150px;
+}
+
+.container-left {
+  grid-area: left;
+}
+
+.container-right {
+  grid-area: right;
+  display: grid;
+  grid-template-areas: 
+  'top'
+  'bottom';
+  grid-template-columns: 100%;
+  grid-template-rows: auto 200px;
+}
+
 /* .movie-grid {
   display: grid;
   grid-template-areas: 
@@ -25,16 +48,16 @@
   grid-template-columns: 500px auto;
 }*/
 
-.poster {
+/* .poster {
   grid-area: left;
-}
+} */
 
 .poster img {
-  max-height: 700px;
+  max-height: 800px;
 } 
 
 .video {
-  grid-area: right;
+  grid-area: top;
   position: relative;
   overflow: hidden;
   padding-top: 56.25%; /* 16:9 Aspect Ratio */
@@ -53,6 +76,64 @@
   height: 100%;
 }
 
-.title {
+.movie-info {
+  grid-area: bottom;
+  background-color: black;
+}
+
+.movie-info-grid {
+  display: grid;
+  grid-template-areas:
+    'title year rating'
+    'desc desc desc'
+  ;
+  grid-template-columns: 80% auto auto;
+}
+
+.movie-title
+{
   grid-area: title;
+  background-color: #efefef;
+  border-top: 1px solid #ababab;
+  border-left: 1px solid #ababab;
+  border-right: none;
+  border-bottom: 1px solid #ababab;
+  /*border-radius: 0.25rem 0 0 0.25rem;*/
+  padding: 10px 20px 10px 20px;
+  font-size: 1.25rem;
+  outline-width: 0;
+}
+
+.year
+{
+  grid-area: year;
+  padding: 10px 20px 10px 20px;
+  background-color: coral;
+  font-size: 1.25rem;
+  color: white;
+  text-align: center;
+  border-top: 1px solid rgb(192, 73, 30);
+  border-right: none;
+  border-left: none;
+  border-bottom: 1px solid rgb(192, 73, 30);
+}
+
+.rating
+{
+  grid-area: rating;
+  padding: 10px 20px 10px 20px;
+  background-color: coral;
+  font-size: 1.25rem;
+  color: white;
+  text-align: center;
+  border-top: 1px solid rgb(192, 73, 30);
+  border-right: 1px solid rgb(192, 73, 30);
+  border-left: 1px solid rgb(192, 73, 30);
+  border-bottom: 1px solid rgb(192, 73, 30);
+  /*border-radius: 0 0.25rem 0.25rem 0;*/
+}
+
+.movie-desc {
+  grid-area: desc;
+  padding: 10px;
 }
