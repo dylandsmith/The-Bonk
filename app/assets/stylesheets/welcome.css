@@ -97,3 +97,99 @@
  hr {
   border-top: 3px double #343a40;
  }
+
+ .display-header-container {
+  padding: 10px 10px 0 10px;
+  background-color: #2b3035;
+ }
+
+ .display-header-grid {
+  display: grid;
+  grid-template-areas: 
+  'title year estbudg gross details';
+  grid-template-columns: 40% auto 20% 20% 10%;
+  background-color: #454d55;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+ }
+
+ .display-title {
+  grid-area: title;
+  padding: 20px;
+ }
+
+ .display-year {
+  grid-area: year;
+  padding: 20px;
+ }
+
+ .display-est-budget {
+  grid-area: estbudg;
+  padding: 20px;
+ }
+
+ .display-gross {
+  grid-area: gross;
+  padding: 20px;
+ }
+
+ .display-details {
+  grid-area: details;
+  padding: 20px;
+ }
+
+ .movie-display-sheet {
+  padding: 3px 10px 0 10px;
+  background-color: #2b3035;
+ }
+
+ .movie-line-item {
+  display: grid;
+  grid-template-areas: 
+  'm-title m-year m-estbudg m-gross m-details';
+  grid-template-columns: 40% auto 20% 20% 10%;
+  background-color: #454d55;
+  color: white;
+  font-size: 14px;
+  margin-bottom: 3px;
+  cursor: pointer;
+ }
+
+ .movie-line-item-title {
+  grid-area: m-title;
+  padding: 20px;
+ }
+
+ .movie-line-item-year {
+  grid-area: m-year;
+  padding: 20px;
+ }
+
+ .movie-line-item-est-budget {
+  grid-area: m-estbudg;
+  padding: 20px;
+ }
+
+ .movie-line-item-gross {
+  grid-area: m-gross;
+  padding: 20px;
+ }
+
+ .movie-line-item-details {
+  grid-area: m-details;
+  padding: 20px;
+ }
+
+ details > summary {
+  list-style: none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+.movie-post {
+  width: 100%;
+  height: 300px;
+  background-color: #efefef;
+}

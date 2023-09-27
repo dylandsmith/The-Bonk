@@ -6,7 +6,7 @@ class WelcomeController < ApplicationController
   
   def index
     if @@search_results.empty?
-      @movies = Movie.all
+      @movies = Movie.includes(@posts).all
     else
       @movies = @@search_results
     end

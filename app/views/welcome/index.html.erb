@@ -4,40 +4,45 @@
       <%= render 'movie/search_movies' %>
     <% end %>
     </section>
+    <% if Current.user %>
     <section class="welcome-main">
-      <% if Current.user %>
-      <!-- 
-        Need to create grid layout to take advantage of HTML details tag
-      -->
-        <div class="table-back-drop">
-          <table class="table table-dark">
-            <thead>
-              <tr>
-                <th>Title</th>
-                <th>Year</th>
-                <th> Estimated Budget</th>
-                <th>Worldwide Gross</th>
-                <th>Details</th>
-              </tr>
-            </thead>
-            <tbody>
-            <% @movies.each do |movie| %>
-              <tr>
-                <td><%= movie.title %></td>
-                <td><%= movie.year_released %></td>
-                <td><%= movie.budget %></td>
-                <td><%= movie.worldwide_gross %></td>
-                <td><% if movie.imdb_id %>
-                      <%= link_to movie_show_path(movie_id: movie.id), class: 'film-link' do %>
-                        <%= fa_icon 'film', class: 'icon'%>
-                      <% end %>
-                    <% end %>
-                </td>
-              </tr>
-            <% end %>
-            </tbody>
-          </table>
+      <section class="display-header-container">
+        <div class="display-header-grid">
+          <div class="display-title">Title</div>
+          <div class="display-year">Year</div>
+          <div class="display-est-budget">Estimated Budget</div>
+          <div class="display-gross">Worldwide Gross</div>
+          <div class="display-details">Details</div>
         </div>
+      </section>
+      <section class="movie-display-sheet">
+        <% @movies.each do |movie| %>
+        <details>
+          <summary>
+          <div class="movie-line-item">
+            <div class="movie-line-item-title"><%= movie.title %></div>
+            <div class="movie-line-item-year"><%= movie.year_released %></div>
+            <div class="movie-line-item-est-budget"><%= movie.budget %></div>
+            <div class="movie-line-item-gross"><%= movie.worldwide_gross %></div>
+            <div class="movie-line-item-details">
+              <% if movie.imdb_id %>
+                <%= link_to movie_show_path(movie_id: movie.id), class: 'film-link' do %>
+                  <%= fa_icon 'film', class: 'icon'%>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+          </summary>
+            <% movie.posts.each do |post| %>
+              <div class="movie-post">
+                <p><%= post.title %></p>
+                <p><%= post.body %></p>
+              </div>
+            <% end %>
+          </details>
+        <% end %>
+      </section>
+
       <% else %>
         <article>
         <p>The road to hell is paved with good intentions. While film makers strive to create masterpieces, 
