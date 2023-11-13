@@ -4,6 +4,10 @@
       <p class="notice"><%= notice %></p> 
       Logged in as: <%= Current.user.email %>
     </span>
+    <div data-controller="movie-title">
+      Movie Title: <input data-target="movie-title.source" type="text" value="Strange Brews">
+      <button data-action="movie-title#copy">Copy to Clipboard</button>
+    </div>
   <% else %>
     <p class="alert"><%= alert %></p>
   <% end %>

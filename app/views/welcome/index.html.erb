@@ -34,9 +34,35 @@
           </div>
           </summary>
             <% movie.posts.each do |post| %>
+              <div data-controller="add-movie-post" class="movie-post-actions">
+                <div data-action="click->add-movie-post#postComment" class="add-post"><%= fa_icon 'plus' %></div>
+                <div style="clear: both;"></div>
+                <div class="modal" data-controller="modal" data-add-movie-post-target="source">
+                  <div class="modal-container">
+                    <div class="modal-header">
+                      <span class="modal-title"><%= fa_icon 'comment' %>&nbsp;Post a comment for <%= movie.title %></span>
+                      <span class="modal-close" data-action="click->modal#close"><%= fa_icon 'window-close 2x' %></span>
+                      <div style="clear:both;"></div>
+                    </div>
+                    <div class="modal-content">
+                        <textarea class="modal-post-body"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                      <%= button_tag class: 'submit-post-btn' do %>
+                        Submit Post<%#= fa_icon 'search' %>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <div class="movie-post">
-                <p><%= post.title %></p>
-                <p><%= post.body %></p>
+                <div class="movie-post-header">
+                  <p><%= post.title %></p>
+                  <%= fa_icon 'comment 2x' %>
+                </div>
+                <div class="movie-post-body">
+                  <p><%= post.body %></p>
+                </div>
               </div>
             <% end %>
           </details>

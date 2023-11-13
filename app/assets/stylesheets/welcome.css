@@ -189,7 +189,121 @@ details > summary::-webkit-details-marker {
 }
 
 .movie-post {
-  width: 100%;
-  height: 300px;
+  padding: 15px;
+  margin-bottom: 3px;
   background-color: #efefef;
+  
+}
+
+.movie-post-header {
+  border: #00a2fe solid 1px;
+  background-color: #00a2fe ;
+  width: 100%;
+  border-radius: 5px 5px 0 0;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+}
+
+.movie-post-body {
+  border: #00a2fe solid 1px;
+  border-radius: 0 0 5px 5px;
+  width: 100%;
+}
+
+.movie-post-actions {
+  background-color: #d1d1d1;
+  width: 100%;
+}
+
+.add-post {
+  float: right;
+  padding: 5px 25px 5px 25px;
+  border-left: 1px solid #a1a1a1;
+  cursor: pointer;
+}
+
+.add-post:hover {
+  background-color: #919191;
+  color: #efefef;
+}
+
+.modal {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color:#efefef;
+  width: 65%;
+  /* height: 50%; */
+  border: 1px solid #00a2fe;
+  border-radius: 5px 5px 5px 5px;
+}
+
+.modal-container {
+  display: grid;
+  grid-template-areas: 
+  'header header header header header'
+  '. main main main .'
+  '. . . footer footer'
+  ;
+  grid-template-columns: 5% 30% 30% 30% 5%;
+}
+
+.modal-header {
+  grid-area: header;
+  height: auto;
+  background-color: #00a2fe;
+  padding: 3px;
+}
+
+.modal-title {
+  float: left;
+  margin-left: 5px;
+  margin-top: 3px;
+  color: white;
+}
+
+.modal-close {
+  color: white;
+  cursor: pointer;
+  float: right;
+}
+
+.modal-close:hover {
+  color:skyblue;
+}
+
+.modal-content {
+  grid-area: main;
+  padding: 10px;
+}
+
+.modal-post-body {
+  width:-webkit-fill-available;
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color:#fff;
+  /* box-shadow: 3px 3px 1px 1px #ccc; */
+  resize: none;
+}
+
+.modal-footer {
+  grid-area: footer;
+  padding: 15px;
+}
+
+.submit-post-btn {
+  float: right;
+  margin-right: 5px;
+  padding: 10px 45px 10px 45px;
+  border: none;
+  border-radius: 4px;
+  background-color:#d1d1d1;
 }
