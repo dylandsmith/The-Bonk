@@ -236,7 +236,6 @@ details > summary::-webkit-details-marker {
   transform: translate(-50%, -50%);
   background-color:#efefef;
   width: 65%;
-  /* height: 50%; */
   border: 1px solid #00a2fe;
   border-radius: 5px 5px 5px 5px;
 }
@@ -245,6 +244,7 @@ details > summary::-webkit-details-marker {
   display: grid;
   grid-template-areas: 
   'header header header header header'
+  '.post_title post_title post_title .'
   '. main main main .'
   '. . . footer footer'
   ;
@@ -280,12 +280,27 @@ details > summary::-webkit-details-marker {
   padding: 10px;
 }
 
+.modal-post-title {
+  grid-area: post_title;
+  width:-webkit-fill-available;
+  height: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color:#fff;
+  /* box-shadow: 3px 3px 1px 1px #ccc; */
+  resize: none;
+}
+
 .modal-post-body {
   width:-webkit-fill-available;
   height: 300px;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 25px;
+  margin-top: 5px;
   padding: 12px 20px;
   border: none;
   border-radius: 4px;

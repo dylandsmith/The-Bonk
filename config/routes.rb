@@ -1,10 +1,17 @@
 Rails.application.routes.draw do
-  get 'movie/index'
-  get 'movie/new'
-  get 'movie/show'
-  get 'movie/edit'
-  get 'movie/update'
-  get 'movie/delete'
+
+  resources :examples
+  # get 'movie/index'
+  # get 'movie/new'
+  # get 'movie/show'
+  # get 'movie/edit'
+  # get 'movie/update'
+  # get 'movie/delete'
+
+  resources :movies
+  resources :posts
+
+  # post 'movie_post/create'
 
   get '/search_movie', to: 'welcome#search_movies', as: 'search_movies'
   get '/clear_search', to: 'welcome#clear_search', as: 'clear_search'

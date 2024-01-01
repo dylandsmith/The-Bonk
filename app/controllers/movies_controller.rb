@@ -1,4 +1,4 @@
-class MovieController < ApplicationController
+class MoviesController < ApplicationController
   require 'uri'
   require 'net/http'
 
@@ -9,7 +9,9 @@ class MovieController < ApplicationController
   end
 
   def show
-    @movie = Movie.find_by(id: params[:movie_id])
+    @movie = Movie.find_by(id: params[:id])
+    @posts = @movie.posts
+
     url = URI("https://moviesminidatabase.p.rapidapi.com/movie/id/#{@movie.imdb_id}/")
 
     http = Net::HTTP.new(url.host, url.port)

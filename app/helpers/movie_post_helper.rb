@@ -1,0 +1,2 @@
+module MoviePostHelper
+end

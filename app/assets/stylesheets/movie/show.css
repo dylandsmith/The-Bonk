@@ -11,7 +11,9 @@
 .main-grid {
   display: grid;
   grid-template-areas: 
-  'left right';
+  'left right'
+  'middle middle'
+  'bottom bottom';
   grid-template-columns: 35% auto;
 }
 
@@ -135,5 +137,146 @@
 
 .movie-desc {
   grid-area: desc;
+  padding: 10px;
+}
+
+.posts-dashboard {
+  grid-area: middle;
+  background-color: #d1d1d1;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.comments-field {
+  grid-area: middle;
+}
+
+.add-post {
+  float: right;
+  padding: 5px 25px 5px 25px;
+  border-left: 1px solid #a1a1a1;
+  cursor: pointer;
+}
+
+.add-post:hover {
+  background-color: #919191;
+  color: #efefef;
+}
+
+.remove-btn {
+  pointer-events: none;
+  float: right;
+  padding: 5px 25px 5px 25px;
+  border-left: 1px solid #a1a1a1;
+  color: #919191;
+}
+
+.container-comments {
+  grid-area: bottom;
+  /* margin-top: 5px; */
+}
+
+.comment-container {
+  width: 100%;
+  display: grid;
+  grid-template-areas: 
+  'header header header header header'
+  '.post_title post_title post_title .'
+  'main main main main main'
+  '. . . . footer'
+  ;
+  grid-template-columns: 20% 20% 20% 30% 10%;
+  border: 1px solid #00a2fe;
+  border-radius: 5px 5px 5px 5px;
+  margin-top: 20px;
+}
+
+.reply-container {
+  width: 90%;
+  float: right;
+  display: grid;
+  grid-template-areas: 
+  'header header header header header'
+  '.post_title post_title post_title .'
+  'main main main main main'
+  '. . . . footer'
+  ;
+  grid-template-columns: 20% 20% 20% 30% 10%;
+  border: 1px solid #00a2fe;
+  border-radius: 5px 5px 5px 5px;
+  margin-top: 20px;
+}
+
+.comment-header {
+  grid-area: header;
+  height: auto;
+  background-color: #00a2fe;
+  padding: 3px;
+}
+
+.comment-title {
+  grid-area: post_title;
+  float: left;
+  margin-left: 5px;
+  margin-top: 3px;
+  color: white;
+  width: 90%;
+}
+
+.comment-title-input {
+  width:90%;
+  color: white;
+  height: 20px;
+  outline: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid white;
+  /* border-radius: 4px; */
+  background-color: #00a2fe;
+  /* box-shadow: 3px 3px 1px 1px #ccc; */
+  /* resize: none; */
+}
+
+.comment-title-input::placeholder {
+  color: skyblue;
+  font-size: large;
+}
+
+.comment-body {
+  width:-webkit-fill-available;
+  height: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color:#fff;
+  /* box-shadow: 3px 3px 1px 1px #ccc; */
+  resize: none;
+}
+
+.comment-save {
+  color: white;
+  float: right;
+  margin-right: 10px;
+}
+
+.comment-save-btn {
+  grid-area: footer;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  background-color: #00a2fe;
+  border-radius: 5px 0 0 0;
+}
+
+.comment-save-btn:hover {
+  background-color:skyblue;
+}
+
+.comment {
+  grid-area: main;
   padding: 10px;
 }
