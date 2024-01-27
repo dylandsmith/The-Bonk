@@ -202,7 +202,7 @@
   '. . . . footer'
   ;
   grid-template-columns: 20% 20% 20% 30% 10%;
-  border: 1px solid #00a2fe;
+  border: 1px solid #8BDF00;
   border-radius: 5px 5px 5px 5px;
   margin-top: 20px;
 }
@@ -211,6 +211,13 @@
   grid-area: header;
   height: auto;
   background-color: #00a2fe;
+  padding: 3px;
+}
+
+.reply-header {
+  grid-area: header;
+  height: auto;
+  background-color: #8BDF00;
   padding: 3px;
 }
 
@@ -272,8 +279,21 @@
   border-radius: 5px 0 0 0;
 }
 
+.reply-save-btn {
+  grid-area: footer;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  background-color: #8BDF00;
+  border-radius: 5px 0 0 0;
+}
+
 .comment-save-btn:hover {
   background-color:skyblue;
+}
+
+.reply-save-btn:hover {
+  background-color:#63a002;
 }
 
 .comment {

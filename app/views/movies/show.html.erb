@@ -36,9 +36,33 @@
           <div class="comment">
             <%= post.body %>
           </div>
-          <div data-controller="post" data-action="click->post#newPost" data-post-comment-type-param="reply" data-post-post-id-param="<%= post.id %>" class="comment-save-btn" >Reply</div>
+          <div data-controller="post" 
+            data-action="click->post#newPost" 
+            data-post-comment-type-param="reply" 
+            data-post-post-id-param="<%= post.id %>" 
+            class="comment-save-btn" >Reply</div>
       </div>
       <div style="clear: both;"></div>
+      <% unless post.replies.empty? %>
+        <% post.replies.each do |reply| %>
+          <div class="reply-container" id="comment_<%= reply.id %>">
+            <div class="reply-header">
+              <div class="comment-title">
+                <%= reply.title %>
+              </div>
+            </div>
+            <div class="comment">
+              <%= reply.body %>
+            </div>
+            <div data-controller="post" 
+              data-action="click->post#newPost" 
+              data-post-comment-type-param="reply" 
+              data-post-post-id-param="<%= reply.id %>" 
+              class="reply-save-btn" >Reply</div>
+          </div>
+          <div style="clear: both;"></div>
+        <% end %>
+      <% end %>
     <% end %>
   </div>
 </div>

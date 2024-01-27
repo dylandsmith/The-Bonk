@@ -29,10 +29,14 @@ export default class extends Controller {
     div2.setAttribute("class", "comment-header")
 
     const titleDiv = document.createElement("div")
+    // if it is a reply, use comment-title-postId -> like: comment-title-2
     titleDiv.setAttribute("class", "comment-title")
 
     const titleInput = document.createElement("input")
-    titleInput.setAttribute("id", "comment_title")
+    if(event.params["commentType"] == "submit")
+      titleInput.setAttribute("id", "comment-title")
+    else
+      titleInput.setAttribute("id", "reply-title-" + event.params["postId"])
     titleInput.setAttribute("class", "comment-title-input")
     titleInput.setAttribute("placeholder", "Comment Title")
     titleDiv.appendChild(titleInput)
@@ -49,7 +53,11 @@ export default class extends Controller {
     commentBodyDiv.setAttribute("class", "comment")
 
     const bodyTextArea = document.createElement("textarea")
-    bodyTextArea.setAttribute("id", "comment_body")
+    // if it is a reply, use comment-body-postId -> like: comment-body-2
+    if(event.params["commentType"] == "submit")
+      bodyTextArea.setAttribute("id", "comment_body")
+    else
+      bodyTextArea.setAttribute("id", "reply-body-" + event.params["postId"])
     bodyTextArea.setAttribute("placeholder", "Comment body here...")
     bodyTextArea.setAttribute("class", "comment-body")
 
@@ -57,13 +65,15 @@ export default class extends Controller {
 
     const saveCommentDiv = document.createElement("div")
     saveCommentDiv.setAttribute("data-controller", "submit_movie_post")
+
     if(event.params["commentType"] == "reply")
       saveCommentDiv.setAttribute("data-action", "click->submit_movie_post#submitReply")
     else
       saveCommentDiv.setAttribute("data-action", "click->submit_movie_post#submitPost")
 
     if(event.params["commentType"] == "reply")
-      saveCommentDiv.setAttribute("data-submit_movie_post-tester-param", event.params["postId"])
+      saveCommentDiv.setAttribute("data-submit_movie_post-post-id-param", event.params["postId"])
+
     saveCommentDiv.setAttribute("class", "comment-save-btn")
     // saveCommentDiv.setAttribute("data-submit-movie-post-target", "source")
     if(event.params["commentType"] == "submit")

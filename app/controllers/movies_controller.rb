@@ -10,7 +10,7 @@ class MoviesController < ApplicationController
 
   def show
     @movie = Movie.find_by(id: params[:id])
-    @posts = @movie.posts
+    @posts = @movie.posts.select{ |post| post.reply_id == 0 }
 
     url = URI("https://moviesminidatabase.p.rapidapi.com/movie/id/#{@movie.imdb_id}/")
 

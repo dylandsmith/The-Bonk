@@ -10,16 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_13_032444) do
-  create_table "comments", force: :cascade do |t|
-    t.integer "post_id"
-    t.integer "parent_id"
-    t.integer "user_id"
-    t.text "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
+ActiveRecord::Schema[7.0].define(version: 2023_11_13_031532) do
   create_table "currents", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -33,15 +24,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_13_032444) do
   end
 
   create_table "flops", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "movie_posts", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "movie_id"
-    t.string "title"
-    t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -75,6 +57,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_13_032444) do
   create_table "posts", force: :cascade do |t|
     t.integer "user_id"
     t.integer "movie_id"
+    t.integer "reply_id"
     t.string "title"
     t.text "body"
     t.datetime "created_at", null: false
