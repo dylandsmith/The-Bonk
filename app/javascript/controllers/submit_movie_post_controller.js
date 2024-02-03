@@ -24,12 +24,13 @@ export default class extends Controller {
   }
 
   async submitReply(event) {
+    console.log(event.params)
     const btn = document.getElementById("add-comments-btn")
     const comment_title = document.getElementById("reply-title-" + event.params["postId"]).value
     const comment_body = document.getElementById("reply-body-" + event.params["postId"]).value
 
     btn.setAttribute("class", "add-post")
-    const request = new FetchRequest('post', '/posts', { body: JSON.stringify({ comment_type: 'reply', post_id: event.params["postId"], comment_title: comment_title, comment_body: comment_body }) })
+    const request = new FetchRequest('post', '/posts', { body: JSON.stringify({ comment_type: 'reply', parent_id: event.params["postParentId"], post_id: event.params["postId"], comment_title: comment_title, comment_body: comment_body }) })
     const response = await request.perform()
     if (response.ok) {
       const body = await response.text

@@ -56,7 +56,8 @@
             </div>
             <div data-controller="post" 
               data-action="click->post#newPost" 
-              data-post-comment-type-param="reply" 
+              data-post-comment-type-param="reply"
+              data-post-post-parent-id-param="<%= post.id %>"
               data-post-post-id-param="<%= reply.id %>" 
               class="reply-save-btn" >Reply</div>
           </div>

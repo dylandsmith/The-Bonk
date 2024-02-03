@@ -1,13 +1,11 @@
 class PostsController < ApplicationController
 
   def index
-    binding.pry
 
   end
 
   # GET /examples/new
   def new
-    binding.pry
     @post = Post.new
   end
 

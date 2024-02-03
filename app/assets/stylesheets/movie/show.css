@@ -230,6 +230,15 @@
   width: 90%;
 }
 
+.reply-title {
+  grid-area: post_title;
+  float: left;
+  margin-left: 5px;
+  margin-top: 3px;
+  color: white;
+  width: 90%;
+}
+
 .comment-title-input {
   width:90%;
   color: white;
@@ -241,6 +250,21 @@
   border-bottom: 1px solid white;
   /* border-radius: 4px; */
   background-color: #00a2fe;
+  /* box-shadow: 3px 3px 1px 1px #ccc; */
+  /* resize: none; */
+}
+
+.reply-title-input {
+  width:90%;
+  color: white;
+  height: 20px;
+  outline: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid white;
+  /* border-radius: 4px; */
+  background-color: #8BDF00;
   /* box-shadow: 3px 3px 1px 1px #ccc; */
   /* resize: none; */
 }
