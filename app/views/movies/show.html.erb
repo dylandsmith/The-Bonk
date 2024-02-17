@@ -48,7 +48,7 @@
           <div class="reply-container" id="comment_<%= reply.id %>">
             <div class="reply-header">
               <div class="comment-title">
-                <%= reply.title %>
+                <%= reply.title %> to <%= post.title %> by: -- <%= Current.user.email %> --
               </div>
             </div>
             <div class="comment">

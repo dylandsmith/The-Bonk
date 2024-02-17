@@ -236,7 +236,7 @@ export default class extends Controller {
     saveCommentDiv.setAttribute("data-action", "click->submit_movie_post#submitPost")
     saveCommentDiv.setAttribute("data-action", "click->submit_movie_post#submitReply")
     saveCommentDiv.setAttribute("data-submit_movie_post-post-id-param", event.params["postId"])
-    saveCommentDiv.setAttribute("data-submit_movie_post-post-parent-id-param", event.params["postParentId"])
+    // saveCommentDiv.setAttribute("data-submit_movie_post-post-parent-id-param", event.params["postParentId"])
 
     saveCommentDiv.setAttribute("class", "reply-save-btn")
     txt = document.createTextNode("Submit Reply")

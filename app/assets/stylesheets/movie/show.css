@@ -89,7 +89,7 @@
     'title year rating'
     'desc desc desc'
   ;
-  grid-template-columns: 80% auto auto;
+  grid-template-columns: 75% auto auto;
 }
 
 .movie-title
