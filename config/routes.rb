@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :movies
   resources :posts
+  resources :favorite
 
   # post 'movie_post/create'
 

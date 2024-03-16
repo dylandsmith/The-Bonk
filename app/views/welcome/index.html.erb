@@ -13,6 +13,7 @@
           <div class="display-est-budget">Estimated Budget</div>
           <div class="display-gross">Worldwide Gross</div>
           <div class="display-details">Details</div>
+          <div class="display-fav">&nbsp</div>
         </div>
       </section>
       <section class="movie-display-sheet">
@@ -29,6 +30,17 @@
                 <%= link_to movie_path(movie), class: 'film-link' do %>
                   <%= fa_icon 'film', class: 'icon'%>
                 <% end %>
+              <% end %>
+            </div>
+            <div class="movie-line-item-fav">
+              <% if movie.favorites.any?{ |m| m.user_id == Current.user.id } %>
+                <div class="favorite-movie">
+                  <%= fa_icon 'thumbs-up', class: 'icon'%>
+                </div>
+              <% else %>
+                <div class="favorite-thumb">
+                  <%= fa_icon 'thumbs-up', class: 'icon'%>
+                </div>
               <% end %>
             </div>
           </div>

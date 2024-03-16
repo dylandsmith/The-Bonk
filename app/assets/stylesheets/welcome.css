@@ -4,7 +4,7 @@
         'header header'
         'main user_info'
         'footer footer';
-    grid-template-columns: 75% auto;
+    grid-template-columns: 80% auto;
     background-color: #efefef;
     width: 90%;
     margin-top: 50px;
@@ -106,8 +106,8 @@
  .display-header-grid {
   display: grid;
   grid-template-areas: 
-  'title year estbudg gross details';
-  grid-template-columns: 40% auto 20% 20% 10%;
+  'title year estbudg gross details fav';
+  grid-template-columns: 40% auto 15% 15% 10% 10%;;
   background-color: #454d55;
   color: white;
   font-size: 14px;
@@ -138,6 +138,10 @@
   grid-area: details;
   padding: 20px;
  }
+ .display-fav {
+  grid-area: fav;
+  padding: 20px;
+ }
 
  .movie-display-sheet {
   padding: 3px 10px 0 10px;
@@ -147,8 +151,8 @@
  .movie-line-item {
   display: grid;
   grid-template-areas: 
-  'm-title m-year m-estbudg m-gross m-details';
-  grid-template-columns: 40% auto 20% 20% 10%;
+  'm-title m-year m-estbudg m-gross m-details m-fav';
+  grid-template-columns: 40% auto 15% 15% 10% 10%;
   background-color: #454d55;
   color: white;
   font-size: 14px;
@@ -178,6 +182,11 @@
 
  .movie-line-item-details {
   grid-area: m-details;
+  padding: 20px;
+ }
+
+ .movie-line-item-fav {
+  grid-area: m-fav;
   padding: 20px;
  }
 

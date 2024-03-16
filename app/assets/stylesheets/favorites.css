@@ -1,0 +1,11 @@
+.favorite-thumb {
+  cursor: pointer;
+  width: 20px;
+}
+.favorite-thumb:hover {
+  color:coral;
+}
+
+.favorite-movie {
+  color: coral;
+}

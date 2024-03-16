@@ -10,11 +10,17 @@
 
 .main-grid {
   display: grid;
-  grid-template-areas: 
+  grid-template-areas:
+  'top top'
   'left right'
   'middle middle'
   'bottom bottom';
   grid-template-columns: 35% auto;
+}
+
+.main-grid-header {
+  grid-area: top;
+  margin-bottom: 10px;
 }
 
 .right-grid {
