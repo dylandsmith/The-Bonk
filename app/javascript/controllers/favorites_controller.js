@@ -41,7 +41,7 @@ export default class extends Controller {
   async favoriteThisMovie(event) {
     console.log("Sending to server:", event.params)
 
-    const request = new FetchRequest('post', '/favorite', { body: JSON.stringify({ movie_id: event.params["movieId"] }) })
+    const request = new FetchRequest('post', '/favorite', { body: JSON.stringify({ movie_id: event.params["movieId"], user_id: event.params["userId"], fav_type: event.params["favType"] }) })
     const response = await request.perform()
     if (response.ok) {
       const body = await response.text

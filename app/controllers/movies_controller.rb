@@ -9,8 +9,24 @@ class MoviesController < ApplicationController
   end
 
   def show
+    @post_struc = {}
+
     @movie = Movie.find_by(id: params[:id])
     @posts = @movie.posts.select{ |post| post.reply_id == 0 }
+
+    # base case: when replies returns an empty array
+    # {post: post, replies: replies[ {reply: reply, replies: replies[]}]}
+
+    # @posts.each do |post|
+    #   unless post.replies.empty?
+    #     @post_struc << {post: post, replies: get_replies(post)}
+    #   else 
+    #     @post_struc << {post: post, replies: nil}
+    #   end
+    #   #get_replies(post)
+    # end
+
+    # binding.pry
 
     url = URI("https://moviesminidatabase.p.rapidapi.com/movie/id/#{@movie.imdb_id}/")
 
@@ -25,6 +41,17 @@ class MoviesController < ApplicationController
 
     @movie_stuff = JSON.parse(response.body)["results"] ? JSON.parse(response.body)["results"] : nil
     # binding.pry
+  end
+
+  def get_replies(post)
+    # binding.pry
+    # until post.replies.empty? # post has replies
+      # @posts_struc = {post: post, replies: post.replies}
+      # does the reply have other replies
+      # get_replies post
+    # end
+
+    return post.replies
   end
 
   def edit

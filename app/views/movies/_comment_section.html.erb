@@ -1,43 +1,4 @@
-<div class="container main-grid">
-  <div class="main-grid-header" data-controller="favorites">
-    <div class="favorite-thumb" 
-      data-action="click->favorites#addToFavorites" 
-      data-favorites-movie-id-param = "<%= @movie.id %>"
-      data-favorites-user-id-param = "<%= Current.user.id %>"
-      data-favorites-fav-type-param = "movie">
-      <%= fa_icon 'thumbs-up', class: 'icon'%>
-    </div>
-  </div>
-  <div class="container-left">
-    <div class="poster">
-      <%= image_tag @movie_stuff["banner"] %>
-      </div>
-  </div>
-  <div class="container-right">
-    <div class="video">
-      <iframe class="video-frame" title="<%= @movie_stuff['title'] %>" src="<%= @movie_stuff['trailer'] %>">
-      </iframe>
-    </div>
-    <div class="movie-info">
-      <div class="movie-info-grid">
-      <!-- Probably need to look into a grid layout for this -->
-        <div class="movie-title"><%= @movie_stuff['title'] %></div>
-        <div class="rating"><%= @movie_stuff['content_rating'] %></div>
-        <div class="year"><%= @movie_stuff['year'] %></div>
-        <div class="movie-desc"><%= @movie_stuff["description"] %></div>
-      </div>
-    </div>
-  </div>
-  <div class="posts-dashboard" data-controller="post">
-    <div id="add-comments-btn" class="add-post" data-post-comment-type-param="submit" data-post-movie-id-param="<%= @movie.id %>" data-action="click->post#newPost"><%= fa_icon 'plus' %></div>
-    <span style="float: right; margin-right: 20px; padding-top: 5px;">Comments section...</span>
-  </div>
-  <div id="comments-container" class="container-comments">
-    <div id="comments-field" class="comments-field"></div>
-    <%= render 'comment_section' %>
-    <%
-=begin%>
- <%= hidden_field_tag  'movie_id', @movie.id %>
+    <%= hidden_field_tag  'movie_id', @movie.id %>
     <% @posts.each do |post| %> 
       <div class="comment-container" id="comment_<%= post.id %>">
           <div class="comment-header">
@@ -99,8 +60,4 @@
           <% end %>
         <% end %>
       <% end %>
-    <% end %> 
-<%
-=end%>
-  </div>
-</div>
+    <% end %>

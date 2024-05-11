@@ -2,7 +2,7 @@ class Movie < ApplicationRecord
 
   has_one :popular_flop
   #has_many :comments, as: :commentable
-  has_many :posts
+  has_many :posts, dependent: :destroy
   has_many :favorites, as: :favoritable
   #has_many :comments
   #has_many :movie_posts
