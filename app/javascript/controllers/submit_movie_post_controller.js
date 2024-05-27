@@ -8,7 +8,7 @@ export default class extends Controller {
   }
 
   async submitPost (event) {
-    console.log(event.params)
+    // console.log(event.params)
     const btn = document.getElementById("add-comments-btn")
     const movie_id = document.getElementById("movie_id").value
     const comment_title = document.getElementById("comment-title").value
@@ -26,7 +26,7 @@ export default class extends Controller {
   }
 
   async submitReply(event) {
-    console.log(event.params)
+    // console.log(event.params)
     const btn = document.getElementById("add-comments-btn")
     const movie_id = document.getElementById("movie_id").value
     const comment_title = document.getElementById("reply-title-" + event.params["postId"]).value

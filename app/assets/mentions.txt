@@ -1,0 +1,8 @@
+- A mention is when some uses the "@" symbol to reference some one else
+- A mention is app wide
+- A mention ID should be created for every user that signs up:
+    -- new user signs up: username -> NewUser, mention ID becomes -> @newuser or @NewUser
+
+    -- probable mentions table structure
+      mentionable_id | user_id | mentionable_type
+      @newuser       | 123     | comment

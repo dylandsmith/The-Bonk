@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_02_185221) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_25_190127) do
   create_table "currents", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -36,6 +36,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_02_185221) do
   create_table "flops", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "mentions", force: :cascade do |t|
+    t.integer "mentionable_id"
+    t.string "mentionable_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mentionable_id"], name: "index_mentions_on_mentionable_id"
   end
 
   create_table "movies", force: :cascade do |t|
