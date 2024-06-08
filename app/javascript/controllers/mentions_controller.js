@@ -27,7 +27,7 @@ export default class extends Controller {
         // Send a request
         xhttp.open("POST", "/mention");
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhttp.send("body=Hello");
+        xhttp.send("user_mention=" + userMention);
       }
 
       if (startRecording) {
@@ -38,16 +38,16 @@ export default class extends Controller {
     }
   }
 
-  async createMention(event) {
-    console.log("Sending to server:", event.params)
+  // async createMention(event) {
+  //   console.log("Sending to server:", event.params)
 
-    const request = new FetchRequest('post', '/mention', { body: JSON.stringify({ movie_id: event.params["movieId"], user_id: event.params["userId"], fav_type: event.params["favType"] }) })
-    const response = await request.perform()
-    if (response.ok) {
-      const body = await response.text
-      location.reload()
-      // Do whatever do you want with the response body
-      // You also are able to call `response.html` or `response.json`, be aware that if you call `response.json` and the response contentType isn't `application/json` there will be raised an error.
-    }
-  }
+  //   const request = new FetchRequest('post', '/mention', { body: JSON.stringify({ movie_id: event.params["movieId"], user_id: event.params["userId"], fav_type: event.params["favType"] }) })
+  //   const response = await request.perform()
+  //   if (response.ok) {
+  //     const body = await response.text
+  //     location.reload()
+  //     // Do whatever do you want with the response body
+  //     // You also are able to call `response.html` or `response.json`, be aware that if you call `response.json` and the response contentType isn't `application/json` there will be raised an error.
+  //   }
+  // }
 }

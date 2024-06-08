@@ -126,7 +126,6 @@ export default class extends Controller {
   }
 
   submitComment(event) {
-    console.log("From comment: ", event.params)
     let txt = ""
     let bookendDiv1, bookendDiv2
 
@@ -159,6 +158,7 @@ export default class extends Controller {
 
     const commentBodyDiv = document.createElement("div")
     commentBodyDiv.setAttribute("class", "comment")
+    commentBodyDiv.setAttribute("data-controller", "mentions")
 
     const bodyTextArea = document.createElement("textarea")
     bodyTextArea.setAttribute("id", "comment_body")

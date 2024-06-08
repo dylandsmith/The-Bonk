@@ -9,4 +9,8 @@ class User < ApplicationRecord
     has_many :mentions, as: :mentionable
 
     validates :email, presence: true, uniqueness: true, format: { with: /\A[^@\s]+@[^@\s]+\z/, message: 'Invalid email' }
+
+    def find_my_mentions
+      binding.pry
+    end
 end
