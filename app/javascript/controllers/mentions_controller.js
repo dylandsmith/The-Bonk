@@ -22,6 +22,7 @@ export default class extends Controller {
         xhttp.onload = function () {
           // Here you can use the Data
           console.log("Made it back")
+          userMention = ""
         }
 
         // Send a request

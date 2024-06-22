@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_06_01_191337) do
+ActiveRecord::Schema[7.0].define(version: 2024_06_22_191623) do
   create_table "currents", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -43,6 +43,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_01_191337) do
     t.string "mentionable_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "user_has_viewed"
     t.index ["mentionable_id"], name: "index_mentions_on_mentionable_id"
   end
 
