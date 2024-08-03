@@ -7,7 +7,7 @@
             </div>
           </div>
           <div class="comment">
-            <%= post.body %>
+            <%= sanitize post.body %>
           </div>
           <div data-controller="post" 
             data-action="click->post#newPost" 
@@ -25,7 +25,7 @@
               </div>
             </div>
             <div class="comment">
-              <%= reply.body %>
+              <%= sanitize reply.body %>
             </div>
             <div data-controller="post" 
               data-action="click->post#newPost" 

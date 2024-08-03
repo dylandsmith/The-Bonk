@@ -8,10 +8,9 @@ class MoviePostController < ApplicationController
     movie_id = params[:movie_id]
     post_hash = {user_id: Current.user.id, movie_id: params[:movie_id]}.merge(movie_post_params)
     # @movie_post = MoviePost.new(movie_post_params)
-    binding.pry
+
     respond_to do |format|
       if @movie_post.save
-        binding.pry
         format.html { redirect_to example_url(@movie_post), notice: "Example was successfully created." }
         format.json { render :show, status: :created, location: @movie_post }
       else

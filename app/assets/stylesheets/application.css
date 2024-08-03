@@ -103,3 +103,7 @@
     color: rgb(155, 64, 30);
     cursor: pointer;
 }
+
+.mention {
+  color: blue;
+}

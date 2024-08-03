@@ -8,14 +8,28 @@ export default class extends Controller {
   }
 
   async submitPost (event) {
-    // console.log(event.params)
     const btn = document.getElementById("add-comments-btn")
     const movie_id = document.getElementById("movie_id").value
     const comment_title = document.getElementById("comment-title").value
     const comment_body = document.getElementById("comment_body").value
+    let comment_body_w_mention = ""
+
+    let mention = comment_body.match(/@\w*\s*\,*/)[0]
+
+    if (mention) {
+      mention = mention.slice(0, mention.length - 1)
+      comment_body_w_mention = comment_body.replace(mention, "<span class='mention'>" + mention + "</span>")
+
+      const xhttp = new XMLHttpRequest();
+
+      xhttp.open("POST", "/mention");
+      xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xhttp.send("user_mention=" + mention);
+    }
+
 
     btn.setAttribute("class", "add-post")
-    const request = new FetchRequest('post', '/posts', { body: JSON.stringify({ comment_type: 'comment', movie_id: movie_id, comment_title: comment_title, comment_body: comment_body }) })
+    const request = new FetchRequest('post', '/posts', { body: JSON.stringify({ comment_type: 'comment', movie_id: movie_id, comment_title: comment_title, comment_body: comment_body_w_mention }) })
     const response = await request.perform()
     if (response.ok) {
       const body = await response.text

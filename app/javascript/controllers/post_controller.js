@@ -158,7 +158,7 @@ export default class extends Controller {
 
     const commentBodyDiv = document.createElement("div")
     commentBodyDiv.setAttribute("class", "comment")
-    commentBodyDiv.setAttribute("data-controller", "mentions")
+    // commentBodyDiv.setAttribute("data-controller", "mentions")
 
     const bodyTextArea = document.createElement("textarea")
     bodyTextArea.setAttribute("id", "comment_body")

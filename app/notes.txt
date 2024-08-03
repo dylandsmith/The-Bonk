@@ -1,0 +1,1 @@
+create a stimulus controller for the comments that searches for mentions when the page loads

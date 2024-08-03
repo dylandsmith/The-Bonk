@@ -12,6 +12,8 @@ class PostsController < ApplicationController
   def create
     if(params[:comment_type] == 'comment')
       @post = Post.new({user_id: Current.user.id, movie_id: params[:movie_id], reply_id: 0, title: params[:comment_title], body: params[:comment_body]})
+      @mention = Mention.new()
+      @mention.create_mention(Current.user.id)
     else
       @post = Post.new({user_id: Current.user.id, movie_id: params[:movie_id], reply_id: params[:parent_id], title: params[:comment_title], body: params[:comment_body]})
     end
