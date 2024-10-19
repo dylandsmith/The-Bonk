@@ -19,17 +19,21 @@ export default class extends Controller {
     if (mention) {
       mention = mention.slice(0, mention.length - 1)
       comment_body_w_mention = comment_body.replace(mention, "<span class='mention'>" + mention + "</span>")
-
-      const xhttp = new XMLHttpRequest();
-
-      xhttp.open("POST", "/mention");
-      xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-      xhttp.send("user_mention=" + mention);
     }
 
-
     btn.setAttribute("class", "add-post")
-    const request = new FetchRequest('post', '/posts', { body: JSON.stringify({ comment_type: 'comment', movie_id: movie_id, comment_title: comment_title, comment_body: comment_body_w_mention }) })
+    // check for mention here and if one exists send it to the post controller
+    const request = new FetchRequest('post', '/posts', 
+      { 
+        body: JSON.stringify(
+          { 
+            comment_type: 'comment', 
+            movie_id: movie_id, 
+            comment_title: comment_title, 
+            comment_body: comment_body_w_mention,
+            mention: mention // mention handler i.e. @dude
+          }) 
+      })
     const response = await request.perform()
     if (response.ok) {
       const body = await response.text

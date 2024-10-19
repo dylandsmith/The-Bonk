@@ -6,6 +6,11 @@ class MoviesController < ApplicationController
   end
 
   def new
+    get_users_mentions
+  end
+
+  def create
+    binding.pry
   end
 
   def show

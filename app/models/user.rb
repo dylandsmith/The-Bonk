@@ -12,6 +12,6 @@ class User < ApplicationRecord
 
     def find_my_mentions
       mentions = self.mentions.where(user_has_viewed: false)
-      binding.pry
+      return mentions
     end
 end

@@ -1,15 +1,39 @@
-<div class="user-title-bar">
+<%
+=begin%>
+ <div class="user-title-bar">
   <% if Current.user %>
     <span>
       <p class="notice"><%= notice %></p> 
       Logged in as: <%= Current.user.email %>
     </span>
-    <div data-controller="movie-title">
-      Movie Title: <input data-target="movie-title.source" type="text" value="Strange Brews">
-      <button data-action="movie-title#copy">Copy to Clipboard</button>
-    </div>
+    
+
   <% else %>
     <p class="alert"><%= alert %></p>
-  <% end %>
-</div>
-
+  <% end %><i class="fas fa-quote-right"></i>
+</div> 
+<%
+=end%>
+<% if Current.user %>
+  <div class="logged-in-user-title">
+    <%= Current.user.email %>
+  </div>
+  <div id="mentioned-posts-container">
+    <% if @posts %>
+      <div class="mention-header">You've been mentioned in these posts</div>
+      <div class="arrow-down"></div>
+      <div class="arrow-down-top"></div>
+      <br/>
+    <% end %>
+    <ul id="mentioned-posts">
+      <% @posts.each do |post| %>
+        <li>
+          <%= fa_icon 'comments' %>
+          <a href="/movies/<%= post.movie.id %>/#comment_<%= post.id %>"><%= post.title %></a>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% else %>
+  <p class="alert"><%= alert %></p>
+<% end %>

@@ -10,6 +10,8 @@ class WelcomeController < ApplicationController
     else
       @movies = @@search_results
     end
+
+    get_users_mentions
   end
 
   def get_popular_flops
@@ -24,5 +26,14 @@ class WelcomeController < ApplicationController
   def clear_search
     @@search_results = []
   end
+
+  private
+
+    # def get_users_mentions
+    #   if Current.user
+    #     @posts = Post.where(mentions: Mention.where(user_id: Current.user.id))
+    #     # @mentions = Current.user.mentions.where(user_has_viewed: false)
+    #   end
+    # end
 
 end
