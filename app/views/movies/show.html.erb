@@ -1,17 +1,16 @@
 <div class="container main-grid">
-  <div class="main-grid-header" data-controller="favorites">
-    <div class="favorite-thumb" 
-      data-action="click->favorites#addToFavorites" 
-      data-favorites-movie-id-param = "<%= @movie.id %>"
-      data-favorites-user-id-param = "<%= Current.user.id %>"
-      data-favorites-fav-type-param = "movie">
-      <%= fa_icon 'thumbs-up', class: 'icon'%>
-    </div>
-  </div>
+  <%
+=begin%>
+  create a tabbed view: one tab for current user's favorites
+  and another tab for the user to see a list of other movies
+  <%
+=end%>
   <div class="container-left">
     <div class="poster">
+      <% unless @movie_stuff["banner"].blank? %>
       <%= image_tag @movie_stuff["banner"] %>
-      </div>
+      <% end %>
+    </div>
   </div>
   <div class="container-right">
     <div class="video">
@@ -20,7 +19,7 @@
     </div>
     <div class="movie-info">
       <div class="movie-info-grid">
-      <!-- Probably need to look into a grid layout for this -->
+        <!-- Probably need to look into a grid layout for this -->
         <div class="movie-title"><%= @movie_stuff['title'] %></div>
         <div class="rating"><%= @movie_stuff['content_rating'] %></div>
         <div class="year"><%= @movie_stuff['year'] %></div>
@@ -37,70 +36,56 @@
     <%= render 'comment_section' %>
     <%
 =begin%>
- <%= hidden_field_tag  'movie_id', @movie.id %>
-    <% @posts.each do |post| %> 
-      <div class="comment-container" id="comment_<%= post.id %>">
-          <div class="comment-header">
-            <div class="comment-title">
-              <%= post.title %> -- <%= post.created_at %>
-            </div>
-          </div>
-          <div class="comment">
-            <%= post.body %>
-          </div>
-          <div data-controller="post" 
-            data-action="click->post#newPost" 
-            data-post-comment-type-param="reply" 
-            data-post-post-id-param="<%= post.id %>" 
-            class="comment-save-btn" >Reply</div>
+    <%= hidden_field_tag  'movie_id', @movie.id %>
+    <% @posts.each do |post| %>
+    <div class="comment-container" id="comment_<%= post.id %>">
+      <div class="comment-header">
+        <div class="comment-title">
+          <%= post.title %> -- <%= post.created_at %>
+        </div>
       </div>
-      <div style="clear: both;"></div>
-      <% unless post.replies.empty? %>
-        <% post.replies.each do |reply| %>
-          <div class="reply-container" id="comment_<%= reply.id %>">
-            <div class="reply-header">
-              <div class="comment-title">
-                <%= reply.title %> to <%= post.title %> by: -- <%= reply.user.email %> -- <%= reply.created_at %>
-              </div>
-            </div>
-            <div class="comment">
-              <%= reply.body %>
-            </div>
-            <div data-controller="post" 
-              data-action="click->post#newPost" 
-              data-post-comment-type-param="reply"
-              data-post-post-parent-id-param="<%= post.id %>"
-              data-post-post-id-param="<%= reply.id %>" 
-              class="reply-save-btn" >Reply
-            </div>
-          </div>
-          <div style="clear: both;"></div>
-          <% unless reply.replies.empty? %>
-            <% reply.replies.each do |r|%>
-              <div class="reply-container" id="comment_<%= r.id %>">
-                <div class="reply-header">
-                  <div class="comment-title">
-                    <%= r.title %> to <%= reply.title %> by: -- <%= r.user.email %> -- <%= r.created_at %>
-                  </div>
-                </div>
-                <div class="comment">
-                  <%= r.body %>
-                </div>
-                <div data-controller="post" 
-                  data-action="click->post#newPost" 
-                  data-post-comment-type-param="reply"
-                  data-post-post-parent-id-param="<%= reply.id %>"
-                  data-post-post-id-param="<%= r.id %>" 
-                  class="reply-save-btn" >Reply
-                </div>
-              </div>
-              <div style="clear: both;"></div>
-            <% end %>
-          <% end %>
-        <% end %>
-      <% end %>
-    <% end %> 
-<%
+      <div class="comment">
+        <%= post.body %>
+      </div>
+      <div data-controller="post" data-action="click->post#newPost" data-post-comment-type-param="reply" data-post-post-id-param="<%= post.id %>" class="comment-save-btn">Reply</div>
+    </div>
+    <div style="clear: both;"></div>
+    <% unless post.replies.empty? %>
+    <% post.replies.each do |reply| %>
+    <div class="reply-container" id="comment_<%= reply.id %>">
+      <div class="reply-header">
+        <div class="comment-title">
+          <%= reply.title %> to <%= post.title %> by: -- <%= reply.user.email %> -- <%= reply.created_at %>
+        </div>
+      </div>
+      <div class="comment">
+        <%= reply.body %>
+      </div>
+      <div data-controller="post" data-action="click->post#newPost" data-post-comment-type-param="reply" data-post-post-parent-id-param="<%= post.id %>" data-post-post-id-param="<%= reply.id %>" class="reply-save-btn">Reply
+      </div>
+    </div>
+    <div style="clear: both;"></div>
+    <% unless reply.replies.empty? %>
+    <% reply.replies.each do |r|%>
+    <div class="reply-container" id="comment_<%= r.id %>">
+      <div class="reply-header">
+        <div class="comment-title">
+          <%= r.title %> to <%= reply.title %> by: -- <%= r.user.email %> -- <%= r.created_at %>
+        </div>
+      </div>
+      <div class="comment">
+        <%= r.body %>
+      </div>
+      <div data-controller="post" data-action="click->post#newPost" data-post-comment-type-param="reply" data-post-post-parent-id-param="<%= reply.id %>" data-post-post-id-param="<%= r.id %>" class="reply-save-btn">Reply
+      </div>
+    </div>
+    <div style="clear: both;"></div>
+    <% end %>
+    <% end %>
+    <% end %>
+    <% end %>
+    <% end %>
+    <%
 =end%>
   </div>
 </div>

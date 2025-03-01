@@ -1,0 +1,43 @@
+    <section class="display-header-container">
+      <div class="display-header-grid">
+        <div class="display-title">Title</div>
+        <div class="display-year">Year</div>
+        <div class="display-est-budget">Estimated Budget</div>
+        <div class="display-gross">Worldwide Gross</div>
+        <div class="display-details">Details</div>
+        <div class="display-fav">&nbsp</div>
+      </div>
+    </section><!-- end display-header-container -->
+    <section class="movie-display-sheet">
+      <% @user_favorites.each do |movie| %>
+      <details>
+        <summary>
+          <div class="movie-line-item">
+            <div class="movie-line-item-title"><%= movie.favoritable.title %></div>
+            <div class="movie-line-item-year"><%= movie.favoritable.year_released %></div>
+            <div class="movie-line-item-est-budget"><%= movie.favoritable.budget %></div>
+            <div class="movie-line-item-gross"><%= movie.favoritable.worldwide_gross %></div>
+            <div class="movie-line-item-details">
+              <% if movie.favoritable.imdb_id %>
+              <%= link_to movie_path(movie.favoritable), class: 'film-link' do %>
+              <%= fa_icon 'film', class: 'icon'%>
+              <% end %>
+              <% end %>
+            </div>
+            <div class="movie-line-item-fav" data-controller="favorites" data-action="click->favorites#addToFavorites" data-favorites-movie-id-param="<%= movie.favoritable.id %>" data-favorites-user-id-param="<%= Current.user.id %>" data-favorites-fav-type-param="movie">
+              <%# if movie.favorites.any?{ |m| m.user_id == Current.user.id } %>
+              <% if movie %>
+              <div class="favorite-movie">
+                <%= fa_icon 'thumbs-up', class: 'icon'%>
+              </div>
+              <% else %>
+              <div class="favorite-thumb">
+                <%= fa_icon 'thumbs-up', class: 'icon'%>
+              </div>
+              <% end %>
+            </div>
+          </div>
+        </summary>
+      </details>
+      <% end %>
+    </section><!-- end movie-ddisplay-sheet -->

@@ -13,17 +13,40 @@
   </section>
   <section class="welcome-main">
     <%= form_with model: @movie do |form| %>
-      <div>
-        <%#= form.label :title, class: 'movie-form' %>
-        <div class="movie-form">
-          <%= form.text_field :title, placeholder: 'Movie Title', class: 'movie-form' %>
+      <div class="movie-form">
+        <div class="movie-form-title">
+          <div class="form-group">
+            <div class="form-caption">Movie Title</div>
+            <%= form.text_field :title, placeholder: 'Movie Title', class: 'movie-form-input' %>
+          </div>
         </div>
+        <div class="movie-form-genre">
+          <div class="form-group">
+            <div class="form-caption">Movie Rating</div>
+            <%= form.select :content_rating, @content_ratings %>
+            <%#= form.text_field :Genre, placeholder: 'Movie Genre', class: 'movie-form-input' %>
+          </div>
+        </div>
+        <div class="movie-form-year">
+          <div class="form-group">
+            <div class="form-caption">Movie Year</div>
+            <%= form.text_field :year_released, placeholder: 'Movie Year', class: 'movie-form-input' %>
+          </div>
+        </div>
+        <div class="movie-form-plot">
+          <div class="form-group">
+            <div class="form-caption">Movie Plot</div>
+            <%= form.text_area :plot, placeholder: 'Movie Plot', class: 'movie-form-input' %>
+          </div>
+        </div>
+        <div class="movie-form-trailer">
+          <div class="form-group">
+            <div class="form-caption">Movie Trailer</div>
+            <%= form.text_field :trailer, placeholder: 'Movie Trailer', class: 'movie-form-input' %>
+          </div>
+        </div>
+        <%= form.submit 'Save recommendation', class: 'recommendation-btn movie-form-submit' %>
       </div>
-      <div>
-        <%= form.label :author %>
-        <%= form.text_field :author %>
-      </div>
-      <%= form.submit %>
     <% end %>
   </section>
   <section class="user_info">

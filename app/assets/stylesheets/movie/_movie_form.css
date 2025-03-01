@@ -1,12 +1,76 @@
-.movie-form input {
-  background-color: #efefef;
-  /* border-top: 1px solid #ababab;
-  border-left: 1px solid #ababab;
-  border-right: none;
-  border-bottom: 1px solid #ababab; */
-  border: 1px solid #ababab;
-  /*border-radius: 0.25rem 0 0 0.25rem;*/
+.movie-form {
+  display: grid;
+  grid-template-areas: 
+  'row1 row1'
+  'row2 row25'
+  'row3 row3'
+  'row4 row4'
+  'row5 row55'
+  ;
+  grid-template-columns: none;
+  column-gap: 15px;
+  row-gap: 10px;
+  /* margin-top: 25px; */
+}
+
+.movie-form-title {
+  grid-area: row1;
+}
+
+.movie-form-genre {
+  grid-area: row2;
+}
+
+.movie-form-genre select {
+  flex: 1;
+}
+
+.movie-form-year {
+  grid-area: row25;
+}
+
+.movie-form-plot {
+  grid-area: row3;
+}
+
+.movie-form-trailer {
+  grid-area: row4;
+}
+
+.movie-form-submit {
+  grid-area: row55;
+}
+
+.movie-form-input {
+  background-color: white;
+  border-top: 1px solid #ababab;
+  border-left: none;
+  border-right: 1px solid #ababab;
+  border-bottom: 1px solid #ababab;
+  /* border: 1px solid #ababab; */
+  border-radius: 0 0.25rem 0.25rem 0;
   padding: 10px 20px 10px 20px;
   font-size: 1.25rem;
   outline-width: 0;
+  display: inline-block;
+  width: 85%;
+  flex: 1
+}
+
+.form-group {
+  display: flex;
+}
+
+.form-caption {
+  background-color: #ababab;
+  color: white;
+  border-top: 1px solid #ababab;
+  border-left: 1px solid #ababab;
+  border-right: 1px solid #ababab;
+  border-bottom: 1px solid #ababab;
+  border-radius: 0.25rem 0 0 0.25rem;
+  padding: 10px 20px 10px 20px;
+  font-size: 1.25rem;
+  outline-width: 0;
+  display: inline-block;
 }

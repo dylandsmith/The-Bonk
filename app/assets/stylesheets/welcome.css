@@ -56,6 +56,10 @@
 
  .welcome-main {
     grid-area: main;
+    display: grid;
+      grid-template-areas:
+        'tab-navigation'
+        'main-content';
     padding-right: 20px;
  }
 
@@ -64,6 +68,10 @@
   height: 400px;
   /* background-color: #d1d1d1;
   border-radius: 0.5rem 0.5rem; */
+ }
+
+ .tab-navigation {
+  grid-area: tab-navigation;
  }
 
  .table-back-drop {
@@ -140,6 +148,7 @@
  }
 
  .display-header-grid {
+  grid-area: main;
   display: grid;
   grid-template-areas: 
   'title year estbudg gross details fav';

@@ -1,147 +1,143 @@
 <div class="welcome-grid">
-    <section class="welcome-grid-title">
+  <section class="welcome-grid-title">
     <% if Current.user %>
-      <section class="header-grid">
-        <div class="welcome-search">
-          <%= render 'movies/search_movies' %>
-        </div>
-        <div class="welcome-recommendation">
-          <%= button_to 'Add Recommendation', new_movie_path, method: :get, class: 'recommendation-btn' %>
-        </div>
-      </section>
-    <% end %>
+    <section class="header-grid">
+      <div class="welcome-search">
+        <%= render 'movies/search_movies' %>
+      </div>
+      <div class="welcome-recommendation">
+        <%= button_to 'Add Recommendation', new_movie_path, method: :get, class: 'recommendation-btn' %>
+      </div>
     </section>
-    <% if Current.user %>
-    <section class="welcome-main">
-      <section class="display-header-container">
-        <div class="display-header-grid">
-          <div class="display-title">Title</div>
-          <div class="display-year">Year</div>
-          <div class="display-est-budget">Estimated Budget</div>
-          <div class="display-gross">Worldwide Gross</div>
-          <div class="display-details">Details</div>
-          <div class="display-fav">&nbsp</div>
-        </div>
-      </section>
-      <section class="movie-display-sheet">
-        <% @movies.each do |movie| %>
-        <details>
-          <summary>
+    <% end %>
+  </section>
+  <% if Current.user %>
+  <section class="welcome-main">
+    <section class="display-header-container">
+      <div class="display-header-grid">
+        <div class="display-title">Title</div>
+        <div class="display-year">Year</div>
+        <div class="display-est-budget">Estimated Budget</div>
+        <div class="display-gross">Worldwide Gross</div>
+        <div class="display-details">Details</div>
+        <div class="display-fav">&nbsp</div>
+      </div>
+    </section>
+    <section class="movie-display-sheet">
+      <% @user_favorites.each do |movie| %>
+      <details>
+        <summary>
           <div class="movie-line-item">
-            <div class="movie-line-item-title"><%= movie.title %></div>
-            <div class="movie-line-item-year"><%= movie.year_released %></div>
-            <div class="movie-line-item-est-budget"><%= movie.budget %></div>
-            <div class="movie-line-item-gross"><%= movie.worldwide_gross %></div>
+            <div class="movie-line-item-title"><%= movie.favoritable.title %></div>
+            <div class="movie-line-item-year"><%= movie.favoritable.year_released %></div>
+            <div class="movie-line-item-est-budget"><%= movie.favoritable.budget %></div>
+            <div class="movie-line-item-gross"><%= movie.favoritable.worldwide_gross %></div>
             <div class="movie-line-item-details">
-              <% if movie.imdb_id %>
-                <%= link_to movie_path(movie), class: 'film-link' do %>
-                  <%= fa_icon 'film', class: 'icon'%>
-                <% end %>
+              <% if movie.favoritable.imdb_id %>
+              <%= link_to movie_path(movie.favoritable), class: 'film-link' do %>
+              <%= fa_icon 'film', class: 'icon'%>
+              <% end %>
               <% end %>
             </div>
-            <div class="movie-line-item-fav" data-controller="favorites"
-              data-action="click->favorites#addToFavorites"
-              data-favorites-movie-id-param = "<%= movie.id %>"
-              data-favorites-user-id-param = "<%= Current.user.id %>"
-              data-favorites-fav-type-param = "movie">
-              <% if movie.favorites.any?{ |m| m.user_id == Current.user.id } %>
-                <div class="favorite-movie">
-                  <%= fa_icon 'thumbs-up', class: 'icon'%>
-                </div>
+            <div class="movie-line-item-fav" data-controller="favorites" data-action="click->favorites#addToFavorites" data-favorites-movie-id-param="<%= movie.id %>" data-favorites-user-id-param="<%= Current.user.id %>" data-favorites-fav-type-param="movie">
+              <% if (movie.user_id == Current.user.id ) %>
+              <div class="favorite-movie">
+                <%= fa_icon 'thumbs-up', class: 'icon'%>
+              </div>
               <% else %>
-                <div class="favorite-thumb">
-                  <%= fa_icon 'thumbs-up', class: 'icon'%>
-                </div>
+              <div class="favorite-thumb">
+                <%= fa_icon 'thumbs-up', class: 'icon'%>
+              </div>
               <% end %>
             </div>
           </div>
-          </summary>
-              <div data-controller="add-movie-post" class="movie-post-actions" data-add-movie-post-length="<%= @movies.length %>">
-                <div data-action="click->add-movie-post#postComment" class="add-post"><%= fa_icon 'plus' %></div>
-                <div style="clear: both;"></div>
-                <div class="modal" data-controller="modal" data-add-movie-post-target="<%= 'source' + movie.id.to_s %>">
-                  <div class="modal-container">
-                    <div class="modal-header">
-                      <span class="modal-title"><%= fa_icon 'comment' %>&nbsp;Post a comment for <%= movie.title %></span>
-                      <span class="modal-close" data-action="click->modal#close"><%= fa_icon 'window-close 2x' %></span>
-                      <div style="clear:both;"></div>
-                    </div>
-                    <div class="modal-content">
-                      <%= form_with(model: @post, url: posts_path) do |form| %>
-                        <%= form.text_field :title, placeholder: 'Title', class: 'modal-post-title' %>
-                        <%= form.text_area :body, placeholder: 'Comment', class: 'modal-post-body' %>
-                        <%#= form.hidden_field :user_id, value: Current.user.id %>
-                        <%= form.hidden_field :movie_id, value: movie.id %>
-                        <!-- <textarea class="modal-post-body"></textarea> -->
-                    </div>
-                    <div class="modal-footer">
-                      <%= form.submit 'Submit Post', class: 'submit-post-btn' %>
-                      <%#= button_tag class: 'submit-post-btn' do %>
-                        <!--Submit Post<%#= fa_icon 'search' %>-->
-                      <%# end %>
-                    </div>
-                    <% end %>
-                  </div>
-                </div>
+        </summary>
+        <div data-controller="add-movie-post" class="movie-post-actions" data-add-movie-post-length="<%= @user_favorites.length %>">
+          <div data-action="click->add-movie-post#postComment" class="add-post"><%= fa_icon 'plus' %></div>
+          <div style="clear: both;"></div>
+          <div class="modal" data-controller="modal" data-add-movie-post-target="<%= 'source' + movie.favoritable.id.to_s %>">
+            <div class="modal-container">
+              <div class="modal-header">
+                <span class="modal-title"><%= fa_icon 'comment' %>&nbsp;Post a comment for <%= movie.favoritable.title %></span>
+                <span class="modal-close" data-action="click->modal#close"><%= fa_icon 'window-close 2x' %></span>
+                <div style="clear:both;"></div>
               </div>
-              <% movie.posts.each do |post| %>
-              <div class="movie-post">
-                <div class="movie-post-header">
-                  <p><%= post.title %></p>
-                  <%= fa_icon 'comment 2x' %>
-                </div>
-                <div class="movie-post-body">
-                  <p><%= post.body %></p>
-                </div>
+              <div class="modal-content">
+                <%= form_with(model: @post, url: posts_path) do |form| %>
+                <%= form.text_field :title, placeholder: 'Title', class: 'modal-post-title' %>
+                <%= form.text_area :body, placeholder: 'Comment', class: 'modal-post-body' %>
+                <%#= form.hidden_field :user_id, value: Current.user.id %>
+                <%= form.hidden_field :movie_id, value: movie.id %>
+                <!-- <textarea class="modal-post-body"></textarea> -->
               </div>
-            <% end %>
-          </details>
-        <% end %>
-      </section>
-
-      <% else %>
-        <article>
-        <p>The road to hell is paved with good intentions. While film makers strive to create masterpieces, 
-        often the film's gross profits fall well below what it took to make and advertise the film. That doesn't mean that the film is bad.</p>
-        <p>Many cult classics were box office flops. Some films went on to make more money in video/streaming services. 
-        Word of mouth can give a film new legs and sometimes it just takes a while for a film to build an audience.</p>
-        </article>
-
-        <span class="table-caption">Current Popular Flops</span>
-        <hr>
-        <br>
-        <div class="table-back-drop">
-          <table class="table table-dark">
-            <thead>
-              <tr>
-                <th>Title</th>
-                <th>Year</th>
-                <th> Estimated Budget</th>
-                <th>Worldwide Gross</th>
-                <th>Details</th>
-              </tr>
-            </thead>
-            <tbody>
-            <% @popular_flops.each do |movie| %>
-              <tr>
-                <td><%= movie.title %></td>
-                <td><%= movie.year_released %></td>
-                <td><%= movie.budget %></td>
-                <td><%= movie.worldwide_gross %></td>
-                <td><% if movie.imdb_id %>
-                      <%= link_to movies_path(movie_id: movie.id), class: 'film-link' do %>
-                        <%= fa_icon 'film', class: 'icon'%>
-                      <% end %>
-                    <% end %>
-                </td>
-              </tr>
-            <% end %>
-            </tbody>
-          </table>
+              <div class="modal-footer">
+                <%= form.submit 'Submit Post', class: 'submit-post-btn' %>
+                <%#= button_tag class: 'submit-post-btn' do %>
+                <!--Submit Post<%#= fa_icon 'search' %>-->
+                <%# end %>
+              </div>
+              <% end %>
+            </div>
+          </div>
         </div>
+        <% movie.favoritable.posts.each do |post| %>
+        <div class="movie-post">
+          <div class="movie-post-header">
+            <p><%= post.title %></p>
+            <%= fa_icon 'comment 2x' %>
+          </div>
+          <div class="movie-post-body">
+            <p><%= post.body %></p>
+          </div>
+        </div>
+        <% end %>
+      </details>
       <% end %>
     </section>
-    <section class="user_info">
-      <%= render 'shared/user_panel' %>
-    </section>
+
+    <% else %>
+    <article>
+      <p>The road to hell is paved with good intentions. While film makers strive to create masterpieces,
+        often the film's gross profits fall well below what it took to make and advertise the film. That doesn't mean that the film is bad.</p>
+      <p>Many cult classics were box office flops. Some films went on to make more money in video/streaming services.
+        Word of mouth can give a film new legs and sometimes it just takes a while for a film to build an audience.</p>
+    </article>
+
+    <span class="table-caption">Current Popular Flops</span>
+    <hr>
+    <br>
+    <div class="table-back-drop">
+      <table class="table table-dark">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Year</th>
+            <th> Estimated Budget</th>
+            <th>Worldwide Gross</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @popular_flops.each do |movie| %>
+          <tr>
+            <td><%= movie.title %></td>
+            <td><%= movie.year_released %></td>
+            <td><%= movie.budget %></td>
+            <td><%= movie.worldwide_gross %></td>
+            <td><% if movie.imdb_id %>
+              <%= link_to movies_path(movie_id: movie.id), class: 'film-link' do %>
+              <%= fa_icon 'film', class: 'icon'%>
+              <% end %>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <% end %>
+  </section>
+  <section class="user_info">
+    <%= render 'shared/user_panel' %>
+  </section>
 </div>

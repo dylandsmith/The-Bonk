@@ -6,12 +6,17 @@ class WelcomeController < ApplicationController
   
   def index
     if @@search_results.empty?
+      if Current.user
+        @user_favorites = Current.user.favorites
+        binding.pry
+        get_users_mentions
+      end
       @movies = Movie.includes(@posts).all
     else
       @movies = @@search_results
     end
 
-    get_users_mentions
+    
   end
 
   def get_popular_flops
