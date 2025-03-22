@@ -8,7 +8,6 @@ class WelcomeController < ApplicationController
     if @@search_results.empty?
       if Current.user
         @user_favorites = Current.user.favorites
-        binding.pry
         get_users_mentions
       end
       @movies = Movie.includes(@posts).all

@@ -6,6 +6,7 @@ class MoviesController < ApplicationController
   end
 
   def new
+    @content_ratings = Movie.distinct.pluck(:content_rating)
     get_users_mentions
   end
 
