@@ -22,11 +22,16 @@
     <% end %>
   </section>
   <% if Current.user %>
+  <%
+=begin%>
+  Put in stimulus controller
+  <%
+=end%>
   <section class="welcome-main">
     <section class="tab-navigation">
-      <div class="w3-bar w3-black">
+      <div class="w3-bar w3-black" data-controller="tabbed_nav">
         <button class="recommendation-btn" onclick="openCity('my_bonks')">My Bonks</button>
-        <button class="recommendation-btn" onclick="openCity('current_bonks')">Current Bonks</button>
+        <button class="recommendation-btn" onclick="openCity('current_bonks')" data-action="click->tabbed_nav#current_bonks">Current Bonks</button>
         <button class="recommendation-btn" onclick="openCity('Tokyo')">Tokyo</button>
       </div>
     </section>

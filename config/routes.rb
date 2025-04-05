@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   get '/search_movie', to: 'welcome#search_movies', as: 'search_movies'
   get '/clear_search', to: 'welcome#clear_search', as: 'clear_search'
+  get '/flops', to: 'welcome#get_popular_flops_json', as: 'flops'
   # get 'password/edit'
   # get 'password/update'
   # get 'session/new'

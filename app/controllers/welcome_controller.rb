@@ -19,7 +19,16 @@ class WelcomeController < ApplicationController
   end
 
   def get_popular_flops
+    # binding.pry
     @popular_flops = PopularFlop.popular_flops
+    # render :json => @popular_flops
+  end
+
+  def get_popular_flops_json
+    binding.pry
+    @popular_flops_json = PopularFlop.popular_flops
+    binding.pry
+    render :json => @popular_flops_json
   end
 
   def search_movies
