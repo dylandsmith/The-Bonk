@@ -15,7 +15,6 @@ class WelcomeController < ApplicationController
       @movies = @@search_results
     end
 
-    
   end
 
   def get_popular_flops
@@ -25,9 +24,9 @@ class WelcomeController < ApplicationController
   end
 
   def get_popular_flops_json
-    binding.pry
-    @popular_flops_json = PopularFlop.popular_flops
-    binding.pry
+    # binding.pry
+    @popular_flops_json = []
+    Favorite.all.each{|f| @popular_flops_json.push(f.favoritable)}
     render :json => @popular_flops_json
   end
 
