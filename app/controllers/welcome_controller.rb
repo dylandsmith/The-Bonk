@@ -27,6 +27,7 @@ class WelcomeController < ApplicationController
     # binding.pry
     @popular_flops_json = []
     Favorite.all.each{|f| @popular_flops_json.push(f.favoritable)}
+    # return @popular_flops_json
     render :json => @popular_flops_json
   end
 
