@@ -14,7 +14,8 @@ class WelcomeController < ApplicationController
     else
       @movies = @@search_results
     end
-
+    # binding.pry
+    render :index, locals: {movies: @user_favorites}, layout: true
   end
 
   def get_popular_flops
@@ -26,9 +27,11 @@ class WelcomeController < ApplicationController
   def get_popular_flops_json
     # binding.pry
     @popular_flops_json = []
-    Favorite.all.each{|f| @popular_flops_json.push(f.favoritable)}
+    Favorite.all.each{|f| @popular_flops_json.push(f)}
     # return @popular_flops_json
-    render :json => @popular_flops_json
+    # render :json => @popular_flops_json
+    # binding.pry
+    render partial: 'movies/movie_table_display', locals: {movies: @popular_flops_json}, layout: false
   end
 
   def search_movies

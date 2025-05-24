@@ -9,14 +9,15 @@
       <div class="display-fav">&nbsp</div>
     </div>
   </section>
-  <section class="movie-display-sheet">
+  <section class="movie-display-sheet" id="postsList">
     <%# binding.pry %>
-    <% if @popular_flops_json.nil? ? @movies = @user_favorites : @movies = @popular_flops_json %>
+    <% if @popular_flops_json.nil? ? movies = @user_favorites : movies = @popular_flops_json %>
     <%# binding.pry %>
     <% end %>
-    <% @movies.each do |movie| %>
+    <% movies.each do |movie| %>
       <details>
         <summary>
+        <%# binding.pry%>
           <div class="movie-line-item">
             <div class="movie-line-item-title"><%= movie.favoritable.title %></div>
             <div class="movie-line-item-year"><%= movie.favoritable.year_released %></div>
@@ -42,7 +43,7 @@
             </div>
           </div>
         </summary>
-        <div data-controller="add-movie-post" class="movie-post-actions" data-add-movie-post-length="<%= @user_favorites.length %>">
+        <div data-controller="add-movie-post" class="movie-post-actions" data-add-movie-post-length="<%= movies.length %>">
           <div data-action="click->add-movie-post#postComment" class="add-post"><%= fa_icon 'plus' %></div>
           <div style="clear: both;"></div>
           <div class="modal" data-controller="modal" data-add-movie-post-target="<%= 'source' + movie.favoritable.id.to_s %>">
