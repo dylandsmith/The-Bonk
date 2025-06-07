@@ -37,12 +37,11 @@
     </section>
     <section class="main-content">
       <div id="my_bonks" class="city">
-        <%= render 'movies/movie_table_display' %>
+        <%= render 'movies/movie_table_display', movies: @user_favorites %>
       </div>
 
       <div id="popular_bonks" class="city" style="display:none">
-        <h2>Paris</h2>
-        <p>Paris is the capital of France.</p>
+        <%= render 'movies/movie_table_display', movies: @popular_flops_json %>
       </div>
 
       <div id="Tokyo" class="city" style="display:none">

@@ -2,7 +2,7 @@ class WelcomeController < ApplicationController
 
   @@search_results = []
 
-  before_action :get_popular_flops
+  #before_action :get_popular_flops
   
   def index
     if @@search_results.empty?
