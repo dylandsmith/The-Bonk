@@ -12,7 +12,9 @@ class ApplicationController < ActionController::Base
   end
 
   def get_users_mentions
+    # binding.pry
     if Current.user
+      binding.pry
       @posts = Post.where(mentions: Mention.where(user_id: Current.user.id))
       # @mentions = Current.user.mentions.where(user_has_viewed: false)
     end

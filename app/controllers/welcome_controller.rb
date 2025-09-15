@@ -5,22 +5,31 @@ class WelcomeController < ApplicationController
   #before_action :get_popular_flops
   
   def index
+    # binding.pry
     if @@search_results.empty?
       if Current.user
         @user_favorites = Current.user.favorites
+        # @user_favorites = []
         get_users_mentions
       end
       @movies = Movie.includes(@posts).all
     else
       @movies = @@search_results
     end
+    # render partial: "movies/tabbed_content", locals: { movies: @user_favorites }
     # binding.pry
-    render :index, locals: {movies: @user_favorites}, layout: true
+    # render :index, layout: true
   end
 
-  def get_popular_flops
+  def get_user_favorites
     # binding.pry
-    @popular_flops = PopularFlop.popular_flops
+    @user_favorites = Current.user.favorites
+    respond_to do |format|
+      format.json { render json: { movies: @user_favorites } }
+      # Optional: Handle other formats like HTML if needed
+      format.html { render :index }
+    end
+    # binding.pry
     # render :json => @popular_flops
   end
 
@@ -28,10 +37,28 @@ class WelcomeController < ApplicationController
     # binding.pry
     @popular_flops_json = []
     Favorite.all.each{|f| @popular_flops_json.push(f)}
+    respond_to do |format|
+      format.json { render json: { movies: @popular_flops_json } }
+      # Optional: Handle other formats like HTML if needed
+      format.html { render :index }
+    end
     # return @popular_flops_json
     # render :json => @popular_flops_json
     # binding.pry
-    render partial: 'movies/movie_table_display', locals: {movies: @popular_flops_json}, layout: false
+    # render partial: 'movies/movie_table_display', locals: {movies: @popular_flops_json}, layout: false
+  end
+
+  def get_popular_flops # this is the action name
+    # binding.pry
+    @user_favorites = []
+    Favorite.all.each{|f| @user_favorites.push(f)} 
+    
+    render partial: "movies/tabbed_content", locals: { movies: @user_favorites }
+
+    # respond_to do |format|
+    #   format.js {render partial: 'movies/movie_table_display'}
+    #   # format.html { render 'index'} # I had to tell rails to use the index by default if it's a html request. 
+    # end
   end
 
   def search_movies
@@ -41,6 +68,14 @@ class WelcomeController < ApplicationController
 
   def clear_search
     @@search_results = []
+  end
+
+  def recommendations
+    # binding.pry
+    @content_ratings = Movie.distinct.pluck(:content_rating)
+    get_users_mentions
+    render partial: "movies/tabbed_content", locals: { movies: 'recommendations' }
+
   end
 
   private

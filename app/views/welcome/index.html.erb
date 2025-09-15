@@ -16,38 +16,33 @@
         <%= render 'movies/search_movies' %>
       </div>
       <div class="welcome-recommendation">
-        <%= button_to 'Add Recommendation', new_movie_path, method: :get, class: 'recommendation-btn' %>
+        <%#= button_to 'Add Recommendation', new_movie_path, method: :get, class: 'recommendation-btn' %>
       </div>
     </section>
     <% end %>
   </section>
   <% if Current.user %>
-  <%
-=begin%>
-  Put in stimulus controller
-  <%
-=end%>
   <section class="welcome-main">
     <section class="tab-navigation">
-      <div class="w3-bar w3-black" data-controller="tabbed_nav">
-        <button class="recommendation-btn" onclick="openCity('my_bonks')">My Bonks</button>
-        <button class="recommendation-btn" onclick="openCity('popular_bonks')" data-action="click->tabbed_nav#current_bonks">Popular Bonks</button>
-        <button class="recommendation-btn" onclick="openCity('Tokyo')">Tokyo</button>
-      </div>
+      <%= link_to "My Bonks",
+                root_path,
+                data: { turbo_frame: "tab-content" },
+                class: "recommendation-btn", turbo_scroll: false %>
+
+      <%= link_to "Popular Bonks",
+                flops_path,
+                data: { turbo_frame: "tab-content" },
+                class: "recommendation-btn", turbo_scroll: false %>
+
+      <%= link_to "Add Recommendation",
+                recommendations_path,
+                data: { turbo_frame: "tab-content" },
+                class: "recommendation-btn", turbo_scroll: false %>
     </section>
     <section class="main-content">
-      <div id="my_bonks" class="city">
-        <%= render 'movies/movie_table_display', movies: @user_favorites %>
-      </div>
-
-      <div id="popular_bonks" class="city" style="display:none">
-        <%= render 'movies/movie_table_display', movies: @popular_flops_json %>
-      </div>
-
-      <div id="Tokyo" class="city" style="display:none">
-        <h2>Tokyo</h2>
-        <p>Tokyo is the capital of Japan.</p>
-      </div>
+      <turbo-frame id="tab-content">
+        <%= render partial: "movies/movie_table_display", locals: { movies: @user_favorites } %>
+      </turbo-frame>
     </section>
 
 

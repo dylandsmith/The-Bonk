@@ -1,0 +1,9 @@
+<turbo-frame id="tab-content">
+<%# binding.pry %>
+  <% if movies.present? && movies != 'recommendations' %>
+  <%= render partial: "movies/movie_table_display", locals: { movies: movies } %>
+  <% else %>
+  <%# binding.pry %>
+  <%= render partial: "movies/recommendation" %>
+  <% end %>
+</turbo-frame>
