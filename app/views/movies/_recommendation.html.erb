@@ -1,16 +1,4 @@
-<div class="welcome-grid">
-  <section class="welcome-grid-title">
-    <% if Current.user %>
-    <section class="header-grid">
-      <div class="welcome-search">
-        <%= render 'movies/search_movies' %>
-      </div>
-      <div class="welcome-recommendation">
-        <%= button_to 'Save Recommendation', movies_path, method: :post, class: 'recommendation-btn' %>
-      </div>
-    </section>
-    <% end %>
-  </section>
+<div>
   <section class="welcome-main">
     <%= form_with model: @movie do |form| %>
     <div class="movie-form">
@@ -48,8 +36,5 @@
       <%= form.submit 'Save recommendation', class: 'recommendation-btn movie-form-submit' %>
     </div>
     <% end %>
-  </section>
-  <section class="user_info">
-    <%= render 'shared/user_panel' %>
   </section>
 </div>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'watch/search'
 
   resources :examples
   # get 'movie/index'
@@ -20,6 +21,8 @@ Rails.application.routes.draw do
   get '/flops', to: 'welcome#get_popular_flops', as: 'flops'
   get '/favorites', to: 'welcome#get_user_favorites', as: 'favorites'
   get '/recommendations', to: 'welcome#recommendations', as: 'recommendations'
+  get 'watch', to: 'watch#search'
+
   # get 'password/edit'
   # get 'password/update'
   # get 'session/new'

@@ -1,0 +1,40 @@
+<h1>Where to Watch</h1>
+
+<%= form_with url: watch_path, method: :get, local: true do |form| %>
+<%= form.label :title, "Enter a movie or show title:" %>
+<%= form.text_field :title, value: params[:title] %>
+<%= form.submit "Search" %>
+<% end %>
+
+<% if @results.present? %>
+<h2>Results:</h2>
+
+<% @results.each do |item| %>
+<div style="margin-bottom: 20px;">
+  <strong><%= item["title"] %></strong><br>
+
+  <% if item["imageSet"] && item["imageSet"]["verticalPoster"] %>
+  <img src="<%= item["imageSet"]["verticalPoster"]["w360"] %>" alt="<%= item["title"] %> poster" width="180">
+  <% end %>
+
+  <p><%= item["overview"] %></p>
+  <p><strong>Year:</strong> <%= item["releaseYear"] %></p>
+  <p><strong>Genres:</strong> <%= item["genres"].map { |g| g["name"] }.join(", ") %></p>
+
+  <% if item["streamingOptions"] && item["streamingOptions"]["us"] %>
+  <p><strong>Streaming:</strong></p>
+  <ul>
+    <% item["streamingOptions"]["us"].each do |option| %>
+    <li>
+      <%= option["service"]["name"] %> - <%= option["type"] %> -
+      <%= option["price"] ? option["price"]["formatted"] : "Free" %> -
+      <a href="<%= option["link"] %>" target="_blank">Watch</a>
+    </li>
+    <% end %>
+  </ul>
+  <% end %>
+</div>
+<% end %>
+<% else %>
+<p>No results found.</p>
+<% end %>

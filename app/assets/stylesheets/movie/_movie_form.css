@@ -39,6 +39,9 @@
 
 .movie-form-submit {
   grid-area: row55;
+  justify-self: end;
+  height: 50px !important;
+  width: 250px;
 }
 
 .movie-form-input {
@@ -72,5 +75,6 @@
   padding: 10px 20px 10px 20px;
   font-size: 1.25rem;
   outline-width: 0;
+  width: 175px;
   display: inline-block;
 }
