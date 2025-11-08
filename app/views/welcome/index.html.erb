@@ -46,7 +46,7 @@
     </section>
 
 
-    <% else %>
+  <% else %>
     <article>
       <p>The road to hell is paved with good intentions. While film makers strive to create masterpieces,
         often the film's gross profits fall well below what it took to make and advertise the film. That doesn't mean that the film is bad.</p>
@@ -69,20 +69,20 @@
           </tr>
         </thead>
         <tbody>
-          <% @popular_flops.each do |movie| %>
+          <%# @popular_flops.each do |movie| %>
           <tr>
-            <td><%= movie.title %></td>
-            <td><%= movie.year_released %></td>
-            <td><%= movie.budget %></td>
-            <td><%= movie.worldwide_gross %></td>
-            <td><% if movie.imdb_id %>
-              <%= link_to movies_path(movie_id: movie.id), class: 'film-link' do %>
-              <%= fa_icon 'film', class: 'icon'%>
-              <% end %>
-              <% end %>
+            <td><%#= movie.title %></td>
+            <td><%#= movie.year_released %></td>
+            <td><%#= movie.budget %></td>
+            <td><%#= movie.worldwide_gross %></td>
+            <td><%# if movie.imdb_id %>
+              <%#= link_to movies_path(movie_id: movie.id), class: 'film-link' do %>
+              <%#= fa_icon 'film', class: 'icon'%>
+              <%# end %>
+              <%# end %>
             </td>
           </tr>
-          <% end %>
+          <%# end %>
         </tbody>
       </table>
     </div>

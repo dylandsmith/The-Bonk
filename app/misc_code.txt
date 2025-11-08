@@ -1,0 +1,40 @@
+      <div data-controller="add-movie-post" class="movie-post-actions" data-add-movie-post-length="<%= movies.length %>">
+        <div data-action="click->add-movie-post#postComment" class="add-post"><%= fa_icon 'plus' %></div>
+        <div style="clear: both;"></div>
+        <div class="modal" data-controller="modal" data-add-movie-post-target="<%= 'source' + movie.favoritable.id.to_s %>">
+          <div class="modal-container">
+            <div class="modal-header">
+              <span class="modal-title"><%= fa_icon 'comment' %>&nbsp;Post a comment for <%= movie.favoritable.title %></span>
+              <span class="modal-close" data-action="click->modal#close"><%= fa_icon 'window-close 2x' %></span>
+              <div style="clear:both;"></div>
+            </div>
+            <div class="modal-content">
+              <%= form_with(model: @post, url: posts_path) do |form| %>
+              <%= form.text_field :title, placeholder: 'Title', class: 'modal-post-title' %>
+              <%= form.text_area :body, placeholder: 'Comment', class: 'modal-post-body' %>
+              <%#= form.hidden_field :user_id, value: Current.user.id %>
+              <%= form.hidden_field :movie_id, value: movie.id %>
+              <!-- <textarea class="modal-post-body"></textarea> -->
+            </div>
+            <div class="modal-footer">
+              <%= form.submit 'Submit Post', class: 'submit-post-btn' %>
+              <%#= button_tag class: 'submit-post-btn' do %>
+              <!--Submit Post<%#= fa_icon 'search' %>-->
+              <%# end %>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <% movie.favoritable.posts.each do |post| %>
+      <div class="movie-post">
+        <div class="movie-post-header">
+          <p><%= post.title %></p>
+          <%= fa_icon 'comment 2x' %>
+        </div>
+        <div class="movie-post-body">
+          <p><%= post.body %></p>
+        </div>
+      </div>
+      <% end %>
