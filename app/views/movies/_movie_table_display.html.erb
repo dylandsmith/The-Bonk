@@ -15,8 +15,8 @@
     <%# binding.pry %>
     <% end %>
     <% movies.each do |movie| %>
-    <details class="movie-display-row" data-controller="movie_listing_display">
-      <!-- "accordian" add detalis controller with data-action that listtens for open event  -->
+    <details class="movie-display-row" data-controller="movie_listing_display" data-movie_listing_display-title-value="<%= movie.favoritable.title %>">
+      <!-- " accordian" add detalis controller with data-action that listtens for open event -->
       <summary>
         <%# binding.pry%>
         <div class="movie-line-item">
@@ -44,7 +44,8 @@
           </div>
         </div>
       </summary>
-      <p>Hello</p>
+      <%#= render "movies/watch_results", results: @result %>
+      <div data-movie_listing_display-target="results"></div>
     </details>
     <% end %>
   </section>

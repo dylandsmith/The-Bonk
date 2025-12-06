@@ -1,0 +1,16 @@
+<% if results.present? %>
+<ul class="availability-list">
+  <% results.each do |result| %>
+  <li>
+    <strong><%= result.title %></strong>
+    <% if result.streaming_services.present? %>
+    Available on: <%= result.streaming_services.join(", ") %>
+    <% else %>
+    Not currently streaming
+    <% end %>
+  </li>
+  <% end %>
+</ul>
+<% else %>
+<p>No results found.</p>
+<% end %>
