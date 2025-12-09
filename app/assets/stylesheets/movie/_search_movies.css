@@ -47,3 +47,35 @@
   border-bottom: 1px solid rgb(192, 73, 30);
   border-radius: 0 0.25rem 0.25rem 0;
 }
+
+/* css for the movie listing and where the movies are streaming */
+.availability-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.availability-item {
+  margin-bottom: 1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.movie-title {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+}
+
+.service-list {
+  list-style: none;
+  padding-left: 1rem;
+}
+
+.service-entry {
+  margin-bottom: 0.5rem;
+}
+
+.no-streaming {
+  color: #666;
+  font-style: italic;
+}
