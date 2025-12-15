@@ -11,6 +11,12 @@ class WelcomeController < ApplicationController
         @user_favorites = Current.user.favorites
         # @user_favorites = []
         get_users_mentions
+      else
+        @popular_flops = []
+        @popular_flops_hash = {}
+        # Favorite.all.distinct.each{|f| @popular_flops.push(f)}
+        # @popular_flops = Favorite.select(:favoritable_id).distinct
+        @popular_flops = Favorite.all.uniq { |f| f.favoritable_id }
       end
       @movies = Movie.includes(@posts).all
     else

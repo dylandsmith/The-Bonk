@@ -1,0 +1,17 @@
+.popular-flops-grid {
+  display: grid;
+  grid-template-areas:
+    'popular-flops-title'
+    'popular-flops-likes-count';
+  background-color: #efefef;
+  border-radius: 0.5rem 0.5rem;
+  padding: 5px;
+}
+
+.popular-flops-title {
+  grid-area: popular-flops-title;
+}
+
+.popular-flops-likes-count {
+  grid-area: popular-flops-likes-count;
+}

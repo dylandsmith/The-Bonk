@@ -1,0 +1,10 @@
+<% @popular_flops.each do |flop|%>
+<div class="popular-flops-grid">
+  <div class="popular-flops-title">
+    <%= flop.favoritable.title %>
+  </div>
+  <div class="popular-flops-likes-count">
+    <%= Favorite.where(favoritable_id: flop.favoritable.id).count %>
+  </div>
+</div>
+<% end %>
