@@ -5,16 +5,22 @@ class FavoriteController < ApplicationController
   end
 
   def create
-    # binding.pry
+    binding.pry
     if params[:fav_type] == 'movie'
       @movie = Movie.find(params[:movie_id])
-      found = @movie.favorites.index { |f| f.user_id == params[:user_id] }
-      if(!found.nil?)
-        Favorite.find(@movie.favorites[found].id).destroy
-        # @movie.favorites.delete(found)
+      favorite = @movie.favorites.find_by(user_id: Current.user.id)
+      if favorite
+        favorite.destroy
       else
-        @movie.favorites.create({user_id: params[:user_id]})
+        @movie.favorites.create!(user_id: Current.user.id)
       end
+      # found = @movie.favorites.index { |f| f.user_id == params[:user_id] }
+      # if(!found.nil?)
+      #   Favorite.find(@movie.favorites[found].id).destroy
+      #   # @movie.favorites.delete(found)
+      # else
+      #   @movie.favorites.create({user_id: params[:user_id]})
+      # end
       respond_to do |format|
         if @movie.save
           # format.html { redirect_back(fallback_location: movie_path(id: params[:movie_id]), notice: "User was successfully updated.") }

@@ -44,7 +44,7 @@ export default class extends Controller {
     const request = new FetchRequest('post', '/favorite', { body: JSON.stringify({ movie_id: event.params["movieId"], user_id: event.params["userId"], fav_type: event.params["favType"] }) })
     const response = await request.perform()
     if (response.ok) {
-      const body = await response.text
+      const body = await response.text()
       location.reload()
       // Do whatever do you want with the response body
       // You also are able to call `response.html` or `response.json`, be aware that if you call `response.json` and the response contentType isn't `application/json` there will be raised an error.
