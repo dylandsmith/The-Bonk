@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get '/favorites', to: 'welcome#get_user_favorites', as: 'favorites'
   get '/recommendations', to: 'welcome#recommendations', as: 'recommendations'
   get 'watch', to: 'watch#search'
+  post '/favorite', to: 'favorites#create'
 
   # get 'password/edit'
   # get 'password/update'

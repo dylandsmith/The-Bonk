@@ -15,6 +15,7 @@
     <%# binding.pry %>
     <% end %>
     <% movies.each do |movie| %>
+    <%= turbo_frame_tag dom_id(movie) do %>
     <details class="movie-display-row" data-controller="movie_listing_display" data-movie_listing_display-title-value="<%= movie.favoritable.title %>">
       <!-- " accordian" add detalis controller with data-action that listtens for open event -->
       <summary>
@@ -31,22 +32,13 @@
             <% end %>
             <% end %>
           </div>
-          <div class="movie-line-item-fav" data-controller="favorites" data-action="click->favorites#addToFavorites" data-favorites-movie-id-param="<%= movie.id %>" data-favorites-user-id-param="<%= Current.user.id %>" data-favorites-fav-type-param="movie">
-            <% if (movie.user_id == Current.user.id ) %>
-            <div class="favorite-movie">
-              <%= fa_icon 'thumbs-up', class: 'icon'%>
-            </div>
-            <% else %>
-            <div class="favorite-thumb">
-              <%= fa_icon 'thumbs-up', class: 'icon'%>
-            </div>
-            <% end %>
-          </div>
+          <%= render partial: "movies/favorite_button", locals: { movie: movie.favoritable } %>
         </div>
       </summary>
       <%#= render "movies/watch_results", results: @result %>
       <div data-movie_listing_display-target="results"></div>
     </details>
+    <% end %>
     <% end %>
   </section>
 </div>

@@ -31,11 +31,24 @@ export default class extends Controller {
     const html = await response.text()
     this.resultsTarget.innerHTML = html
   }
-  /*
-  toggle(event) {
-    console.log("Toggled:", this.element.open);
-    // You can add logic here, e.g.:
-    // this.element.open ? this.expand() : this.collapse();
-  }
-    */
+  
+  // toggle(event) {
+  //   console.log("Toggled:", this.element.open);
+  //   // You can add logic here, e.g.:
+  //   // this.element.open ? this.expand() : this.collapse();
+  // }
+  
+
+  // guard(e) {
+  //   if (!e.target.closest("target-button")) {
+  //     e.preventDefault() // block default toggle
+  //     console.log("prevented")
+  //   }
+  // }
+
+  // toggle(e) {
+  //   e.stopPropagation()
+  //   console.log("e")
+  //   this.element.open = !this.element.open
+  // }
 }

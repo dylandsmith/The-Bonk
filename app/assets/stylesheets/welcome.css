@@ -161,7 +161,7 @@
   display: grid;
   grid-template-areas: 
   'title year estbudg gross details fav';
-  grid-template-columns: 40% auto 15% 15% 10% 10%;;
+  grid-template-columns: 40% auto 15% 15% 10% 10%;
   background-color: #454d55;
   color: white;
   font-size: 14px;
@@ -197,6 +197,9 @@
   padding: 20px;
  }
 
+ .movie-display-row {
+  cursor: none;
+ }
  .movie-display-sheet {
   grid-area: main-content;
   padding: 3px 10px 5px 10px;

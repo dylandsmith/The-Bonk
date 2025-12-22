@@ -1,0 +1,9 @@
+<%#= turbo_frame_tag dom_id(movie, :favorite) do %>
+  <button data-controller="favorites" 
+  data-action="click->favorites#addToFavorites" 
+  data-favorites-movie-id-value="<%= movie.id %>" 
+  data-favorites-user-id-value="<%= Current.user.id %>" 
+  data-favorites-fav-type-value="movie" 
+  class="favorite-btn <%= 'active' if movie.favorited_by?(Current.user) %>">
+  </button>
+<%# end %>
