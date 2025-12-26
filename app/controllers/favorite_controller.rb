@@ -6,7 +6,7 @@ class FavoriteController < ApplicationController
   end
 
   def create
-
+    binding.pry
     movie = Movie.find(favorite_params[:movie_id])
     favorite = Favorite.find_by(user: Current.user, favoritable: movie)
 
