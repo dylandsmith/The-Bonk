@@ -124,6 +124,8 @@ GEM
       racc (~> 1.4)
     nokogiri (1.15.2-x86_64-linux)
       racc (~> 1.4)
+    pg (1.6.3-x86_64-darwin)
+    pg (1.6.3-x86_64-linux)
     pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -225,6 +227,7 @@ DEPENDENCIES
   httparty
   importmap-rails
   jbuilder
+  pg
   pry-byebug
   pry-rails
   puma (~> 5.0)
@@ -232,7 +235,7 @@ DEPENDENCIES
   requestjs-rails
   rspec-rails
   sprockets-rails
-  sqlite3 (~> 1.4)
+  sqlite3
   stimulus-rails
   turbo-rails
   tzinfo-data
