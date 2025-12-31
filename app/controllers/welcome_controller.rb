@@ -14,17 +14,12 @@ class WelcomeController < ApplicationController
       else
         @popular_flops = []
         @popular_flops_hash = {}
-        # Favorite.all.distinct.each{|f| @popular_flops.push(f)}
-        # @popular_flops = Favorite.select(:favoritable_id).distinct
         @popular_flops = Favorite.all.uniq { |f| f.favoritable_id }
       end
       @movies = Movie.includes(@posts).all
     else
       @movies = @@search_results
     end
-    # render partial: "movies/tabbed_content", locals: { movies: @user_favorites }
-    # binding.pry
-    # render :index, layout: true
   end
 
   def get_user_favorites
@@ -68,8 +63,13 @@ class WelcomeController < ApplicationController
   end
 
   def search_movies
+    # binding.pry
     @@search_results = Movie.search_movies(params[:query])
-    # redirect_to request.referrer
+    @popular_flops = []
+    @popular_flops_hash = {}
+    @popular_flops = Favorite.all.uniq { |f| f.favoritable_id }
+    get_users_mentions
+    render :index
   end
 
   def clear_search

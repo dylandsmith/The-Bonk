@@ -16,13 +16,15 @@ Rails.application.routes.draw do
 
   # post 'movie_post/create'
 
-  get '/search_movie', to: 'welcome#search_movies', as: 'search_movies'
-  get '/clear_search', to: 'welcome#clear_search', as: 'clear_search'
+  # get '/search_movie', to: 'welcome#search_movies', as: 'search_movies'
+  # get '/clear_search', to: 'welcome#clear_search', as: 'clear_search'
   get '/flops', to: 'welcome#get_popular_flops', as: 'flops'
   get '/favorites', to: 'welcome#get_user_favorites', as: 'favorites'
   get '/recommendations', to: 'welcome#recommendations', as: 'recommendations'
   get 'watch', to: 'watch#search'
   post '/favorite', to: 'favorites#create'
+  get 'search_movies', to: 'search_movies#index', as: :search_movies
+  get 'clear_search',  to: 'search_movies#clear', as: :clear_search
 
   # get 'password/edit'
   # get 'password/update'

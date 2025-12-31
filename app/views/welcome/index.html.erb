@@ -13,7 +13,7 @@
     <%# if Current.user %>
     <section class="header-grid">
       <div class="welcome-search">
-        <%= render 'movies/search_movies' %>
+        <%= render partial: 'movies/search_movies' %>
       </div>
       <div class="welcome-recommendation">
         <%#= button_to 'Add Recommendation', new_movie_path, method: :get, class: 'recommendation-btn' %>

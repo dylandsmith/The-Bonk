@@ -1,16 +1,25 @@
 <div class="input-group">
-<%= form_with url: search_movies_path, method: :get, class: 'search-form' do |form| %>
-    <%= form.text_field :query, placeholder: 'Search for...', class: 'search-movies-input' %>
-      <%= button_tag class: 'search-button left-btn' do %>
-        <%= fa_icon 'search' %>
-      <% end %>
+  <%= form_with url: search_movies_path,
+                method: :get,
+                class: "search-form",
+                data: { turbo_frame: "tab-content" } do |form| %>
+
+  <%= form.text_field :query,
+          placeholder: "Search for...",
+          class: "search-movies-input" %>
+
+  <%= button_tag type: "submit", class: "search-button left-btn" do %>
+  <%= fa_icon "search" %>
+  <% end %>
   <% end %>
 
+  <%= form_with url: root_path,
+                method: :get,
+                class: "search-form",
+                data: { turbo_frame: "tab-content" } do %>
 
-
-  <%= form_with url: clear_search_path, method: :get, class: 'search-form' do |form| %>
-      <%= button_tag class: 'search-button right-btn' do %>
-        <%= fa_icon 'times' %>
-      <% end %>
+  <%= button_tag type: "submit", class: "search-button right-btn" do %>
+  <%= fa_icon "times" %>
+  <% end %>
   <% end %>
 </div>

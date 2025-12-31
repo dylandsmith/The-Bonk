@@ -1,17 +1,68 @@
 .popular-flops-grid {
   display: grid;
   grid-template-areas:
-    'popular-flops-title'
-    'popular-flops-likes-count';
-  background-color: #efefef;
-  border-radius: 0.5rem 0.5rem;
+    'popular-flops-likes-count popular-flops-title';
+  grid-template-columns: auto 85%;
+  background-color:#2b3035;
+  /* border-radius: 0.5rem 0.5rem; */
   padding: 5px;
-}
-
-.popular-flops-title {
-  grid-area: popular-flops-title;
 }
 
 .popular-flops-likes-count {
   grid-area: popular-flops-likes-count;
+  padding: 10px 0 10px 0;
+  color: white;
+  background-color: rgb(255, 128, 0);
+  text-align: center;
+  vertical-align: middle;
 }
+
+.popular-flops-title {
+  grid-area: popular-flops-title;
+  padding: 10px 0 10px 3px;
+  background-color: #454d55;
+  color: white;
+}
+
+.tooltip {
+  position: relative;
+  cursor: help;
+}
+
+.tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #222;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 18px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease-in-out;
+  z-index: 1000;
+}
+
+.tooltip:hover::after {
+  opacity: 1;
+}
+
+.tooltip::before {
+  content: "";
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #222;
+  opacity: 0;
+}
+
+.tooltip:hover::before {
+  opacity: 1;
+}
+

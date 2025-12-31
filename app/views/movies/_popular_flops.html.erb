@@ -1,10 +1,12 @@
 <% @popular_flops.each do |flop|%>
 <div class="popular-flops-grid">
-  <div class="popular-flops-title">
-    <%= flop.favoritable.title %>
-  </div>
   <div class="popular-flops-likes-count">
-    <%= Favorite.where(favoritable_id: flop.favoritable.id).count %>
+    <%= Favorite.where(favoritable_id: flop.favoritable.id).count %><%= fa_icon 'thumbs-up', class: 'icon'%>
+  </div>
+  <div class="popular-flops-title">
+    <span class="tooltip" data-tooltip="<%= flop.favoritable.title %>">
+      <%= flop.favoritable.title.truncate(25, omission: '...') %>
+    </span>
   </div>
 </div>
 <% end %>
