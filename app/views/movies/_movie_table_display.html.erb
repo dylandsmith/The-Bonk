@@ -12,18 +12,18 @@
   <section class="movie-display-sheet" id="postsList">
     <% movies&.each do |movie| %>
     <%= turbo_frame_tag dom_id(movie) do %>
-    <details class="movie-display-row" data-controller="movie_listing_display" data-movie_listing_display-title-value="<%= movie.favoritable.title %>">
+    <details class="movie-display-row" data-controller="movie_listing_display" data-movie_listing_display-title-value="<%= movie.title %>">
       <!-- " accordian" add detalis controller with data-action that listtens for open event -->
       <summary>
         <%# binding.pry%>
         <div class="movie-line-item">
-          <div class="movie-line-item-title"><%= movie.favoritable.title %></div>
-          <div class="movie-line-item-year"><%= movie.favoritable.year_released %></div>
-          <div class="movie-line-item-est-budget"><%= movie.favoritable.budget %></div>
-          <div class="movie-line-item-gross"><%= movie.favoritable.worldwide_gross %></div>
+          <div class="movie-line-item-title"><%= movie.title %></div>
+          <div class="movie-line-item-year"><%= movie.year_released %></div>
+          <div class="movie-line-item-est-budget"><%= movie.budget %></div>
+          <div class="movie-line-item-gross"><%= movie.worldwide_gross %></div>
           <div class="movie-line-item-details">
-            <% if movie.favoritable.imdb_id %>
-            <%= link_to movie_path(movie.favoritable), data: { turbo: "false" }, class: 'film-link' do %>
+            <% if movie.imdb_id %>
+            <%= link_to movie_path(movie), data: { turbo: "false" }, class: 'film-link' do %>
             <%= fa_icon 'film', class: 'icon'%>
             <% end %>
             <% end %>
@@ -34,7 +34,7 @@
                 data-favorites-movie-id-param="<%= movie.id %>" 
                 data-favorites-user-id-param="<%= Current.user.id %>" 
                 data-favorites-fav-type-param="movie">
-            <% if (movie.user_id == Current.user.id ) %>
+            <% if (movie.favorites.exists? user_id: Current.user.id ) %>
             <div class="favorite-movie">
               <%= fa_icon 'thumbs-up', class: 'icon'%>
             </div>

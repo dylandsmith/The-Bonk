@@ -23,7 +23,7 @@ class FavoriteController < ApplicationController
     #     partial: "movies/movie_table_display",
     #     locals: { movie: movie }
     #   )
-    binding.pry
+    # binding.pry
     if params[:fav_type] == 'movie'
       @movie = Movie.find(params[:movie_id])
       # favorite = @movie.favorites.find_by(user_id: Current.user.id)

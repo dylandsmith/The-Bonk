@@ -7,32 +7,31 @@ class WelcomeController < ApplicationController
   def index
     # binding.pry
     if @@search_results.empty?
-      if Current.user
-        @user_favorites = Current.user.favorites
+      # if Current.user
+        # @user_favorites = Current.user.favorites.each{|f| f.favoritable}
         # @user_favorites = []
+        # @loggedin_movies = @user_favorites.each { |f| f.favoritable }
+        # binding.pry
         get_users_mentions
-      else
+      # else
         @popular_flops = []
         @popular_flops_hash = {}
         @popular_flops = Favorite.all.uniq { |f| f.favoritable_id }
-      end
+      # end
       @movies = Movie.includes(@posts).all
     else
       @movies = @@search_results
     end
+    # binding.pry
+    # render partial: "movies/tabbed_content", locals: { movies: @movies }
   end
 
-  def get_user_favorites
-    # binding.pry
-    @user_favorites = Current.user.favorites
-    respond_to do |format|
-      format.json { render json: { movies: @user_favorites } }
-      # Optional: Handle other formats like HTML if needed
-      format.html { render :index }
-    end
-    # binding.pry
-    # render :json => @popular_flops
-  end
+def get_user_favorites
+  @movies = Current.user.favorite_movies
+
+  render partial: "movies/tabbed_content", locals: { movies: @movies }
+end
+
 
   def get_popular_flops_json
     # binding.pry

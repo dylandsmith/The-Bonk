@@ -24,8 +24,12 @@
   <% if Current.user %>
   <section class="welcome-main">
     <section class="tab-navigation">
-      <%= link_to "My Bonks",
+      <%= link_to "Bonks Buffet",
                     root_path,
+                    data: { turbo_fame: "tab-content" },
+                    class: "recommendation-btn", turbo_scroll: false %>
+      <%= link_to "My Bonks",
+                    favorites_path,
                     data: { turbo_frame: "tab-content" },
                     class: "recommendation-btn", turbo_scroll: false %>
 
@@ -41,7 +45,7 @@
     </section>
     <section class="main-content">
       <turbo-frame id="tab-content">
-        <%= render partial: "movies/movie_table_display", locals: { movies: @user_favorites } %>
+        <%= render partial: "movies/movie_table_display", locals: { movies: @movies } %>
       </turbo-frame>
     </section>
   </section>
@@ -70,6 +74,53 @@
           </p>
         </div>
       </section>
+      <div id="my_bonks" class="city">
+        <section class="display-header-container">
+          <div class="display-header-grid">
+            <div class="display-title">Title</div>
+            <div class="display-year">Year</div>
+            <div class="display-est-budget">Estimated Budget</div>
+            <div class="display-gross">Worldwide Gross</div>
+            <div class="display-details">Details</div>
+            <div class="display-fav">&nbsp</div>
+          </div>
+        </section>
+        <section class="movie-display-sheet" id="postsList">
+          <% @movies&.each do |movie| %>
+          <details class="movie-display-row" data-controller="movie_listing_display" data-movie_listing_display-title-value="<%= movie.title %>">
+            <!-- " accordian" add detalis controller with data-action that listtens for open event -->
+            <summary>
+              <%# binding.pry%>
+              <div class="movie-line-item">
+                <div class="movie-line-item-title"><%= movie.title %></div>
+                <div class="movie-line-item-year"><%= movie.year_released %></div>
+                <div class="movie-line-item-est-budget"><%= movie.budget %></div>
+                <div class="movie-line-item-gross"><%= movie.worldwide_gross %></div>
+                <div class="movie-line-item-details">
+                  <% if movie.imdb_id %>
+                  <%= link_to movie_path(movie), data: { turbo: "false" }, class: 'film-link' do %>
+                  <%= fa_icon 'film', class: 'icon'%>
+                  <% end %>
+                  <% end %>
+                </div>
+                <%# binding.pry %>
+                <div class="movie-line-item-fav" data-controller="favorites" data-action="click->favorites#addToFavorites" data-favorites-movie-id-param="<%= movie.id %>" data-favorites-user-id-param="<%= Current.user&.id %>" data-favorites-fav-type-param="movie">
+                  <%# if (movie.user_id& == Current.user&.id ) %>
+                  <!-- <div class="favorite-movie"> -->
+                    <%= fa_icon 'thumbs-up', class: 'icon'%>
+                  <!-- </div> -->
+                  <%# else %>
+                  <!-- <div class="favorite-thumb"> -->
+                    <%#= fa_icon 'thumbs-up', class: 'icon'%>
+                  <!-- </div> -->
+                  <%# end %>
+                </div>
+            </summary>
+            <%#= render "movies/watch_results", results: @result %>
+          </details>
+          <% end %>
+        </section>
+      </div>
     </section>
   </section>
   <section class="user_info">
