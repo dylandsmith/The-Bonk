@@ -1,0 +1,35 @@
+.streaming-list {
+  display: grid;
+  grid-template-areas:
+    'service-name service-type service-price service-link';
+  grid-template-columns: 33% 33% 30% 3%;
+  background-color: rgb(198, 255, 140);
+  margin-bottom: 3px;
+  margin-left: 20px;
+  padding: 10PX;
+}
+
+.streaming-service {
+  grid-area: service-name;
+  background-color: rgb(240, 251, 231);
+  padding: 10px;
+}
+
+.service-type {
+  grid-area: service-type;
+    background-color: rgb(240, 251, 231);
+      padding: 10px;
+}
+
+.service-price {
+  grid-area: service-price;
+    background-color: rgb(240, 251, 231);
+      padding: 10px;
+}
+
+.service-link {
+  grid-area: service-link;
+  background-color: rgb(83, 165, 1);
+  padding: 10px;
+  color: white;
+}

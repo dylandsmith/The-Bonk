@@ -1,25 +1,28 @@
 <% if results.present? %>
-<ul class="availability-list">
-  <% results.each do |result| %>
-  <% if result.streaming_services.present? %>
-  <ul class="service-list">
-    <% result.streaming_services.each do |service| %>
-    <li class="service-entry">
-      <strong><%= service[:service_name] %></strong>
-      (<%= service[:type].capitalize %>)
-      <% if service[:price].present? %>
-      – <%= service[:price] %>
-      <% end %>
-      <br>
-      <%= link_to "Watch", service[:link], target: "_blank", rel: "noopener" %>
-    </li>
+<% results.each do |result| %>
+<% if result.streaming_services.present? %>
+<% result.streaming_services.each do |service| %>
+<div class="streaming-list">
+  <div class="streaming-service">
+    <%= service[:service_name] %>
+  </div>
+  <div class="service-type">
+    <%= service[:type].capitalize %>
+  </div>
+  <div class="service-price">
+    <% if service[:price].present? %>
+    – <%= service[:price] %>
     <% end %>
-  </ul>
-  <% else %>
-  <p class="no-streaming">Not currently streaming in the US.</p>
-  <% end %>
-  <% end %>
-</ul>
+  </div>
+  <div class="service-link">
+    <%= link_to service[:link], target: "_blank" do %>
+    <%= fa_icon 'link', class: 'icon'%>
+    <% end %>
+  </div>
+</div>
+<% end %>
+<% end %>
+<% end %>
 <% else %>
 <p>No results found.</p>
 <% end %>

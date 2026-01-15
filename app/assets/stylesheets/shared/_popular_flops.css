@@ -11,10 +11,20 @@
 .popular-flops-likes-count {
   grid-area: popular-flops-likes-count;
   padding: 10px 0 10px 0;
-  color: white;
+  color: black;
   background-color: rgb(255, 128, 0);
   text-align: center;
   vertical-align: middle;
+  background-image: url("thumbs-up-white.png");
+  background-repeat: no-repeat;
+  background-size: 34px;
+  /* Scales the image to cover the entire container while maintaining aspect ratio. */
+  background-position: center;
+  /* Centers the image in the container. */
+  /* background-attachment: fixed; */
+  /* Keeps the image fixed when scrolling. */
+  /* background-color: #cccccc; */
+  /* Optional: fallback color if the image fails to load. */
 }
 
 .popular-flops-title {
