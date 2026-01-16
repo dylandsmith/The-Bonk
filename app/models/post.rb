@@ -13,7 +13,7 @@ class Post < ApplicationRecord
    private
 
     def create_mention()
-      user = User.find_by(handle: self.handle)
+      user = User.find_by(handle: self.handle.strip)
       if user
         user.mentions.create(user_has_viewed: false)
       end

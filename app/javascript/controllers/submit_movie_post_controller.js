@@ -4,20 +4,28 @@ import { FetchRequest } from '@rails/request.js'
 export default class extends Controller {
 
   connect() {
-    // console.log(this.data.get("testValue"))
+
   }
 
   async submitPost (event) {
+    //debugger
     const btn = document.getElementById("add-comments-btn")
     const movie_id = document.getElementById("movie_id").value
     const comment_title = document.getElementById("comment-title").value
     const comment_body = document.getElementById("comment_body").value
     let comment_body_w_mention = ""
+    let mention = ""
 
-    let mention = comment_body.match(/@\w*\s*\,*/)[0]
+    //let mention = "" // comment_body.match(/@\w*\s*\,*/)[0]
+//debugger
+    if (/(^|\s)@\w+/.test(comment_body)) {
+      const match = comment_body.match(/(^|\s)@(\w+)/)
 
-    if (mention) {
-      mention = mention.slice(0, mention.length - 1)
+      if (match) {
+        mention = match[0]
+      }
+
+      //let mention = comment_body.match(/@\w*\s*\,*/)[0].slice(0, comment_body.match(/@\w*\s*\,*/)[0].length - 1)
       comment_body_w_mention = comment_body.replace(mention, "<span class='mention'>" + mention + "</span>")
     }
 

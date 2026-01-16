@@ -18,7 +18,7 @@ class WelcomeController < ApplicationController
         @popular_flops_hash = {}
         @popular_flops = Favorite.all.uniq { |f| f.favoritable_id }
       # end
-      @movies = Movie.includes(@posts).all
+      @movies = Movie.includes(:posts).all
     else
       @movies = @@search_results
     end
