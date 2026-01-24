@@ -1,25 +1,102 @@
 # README
+🎬 The Bonk
+The Bonk is a full-stack Ruby on Rails web application for discovering movies and TV shows and finding where to stream them. It combines multiple external APIs with a relational database to deliver a personalized, production-ready experience.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Live Link: https://the-bonk-b6cd080bd586.herokuapp.com
 
-Things you may want to cover:
+Features
 
-* Ruby version
+🔍 Search movies and TV shows by title
 
-* System dependencies
+📺 View real-time streaming availability across platforms
 
-* Configuration
+⭐ Access rich metadata (synopsis, release year, ratings)
 
-* Database creation
+❤️ Save and manage favorites/watchlists
 
-* Database initialization
+👤 User accounts with personalized data
 
-* How to run the test suite
+⚡ Fast server-side rendering with Rails
 
-* Services (job queues, cache servers, search engines, etc.)
+🛠 Tech Stack
 
-* Deployment instructions
+Backend
 
+Ruby on Rails
+
+PostgreSQL
+
+ActiveRecord
+
+RESTful architecture
+
+Frontend
+
+ERB templates
+
+Rails helpers & partials
+
+Responsive layouts
+
+APIs
+
+TMDB (The Movie Database) API
+
+Streaming availability API (via RapidAPI)
+
+Other
+
+RSpec for testing
+
+FactoryBot for test data
+
+Environment-based credentials
+
+Deployed to production
+
+🧠 Why I Built This
+
+The Bonk was built to solve a real problem: finding something to watch — and knowing where it’s actually streaming — shouldn’t be hard.
+
+From a technical perspective, this project demonstrates:
+
+Designing and evolving relational database schemas
+
+Integrating and normalizing data from multiple third-party APIs
+
+Building maintainable Rails models, controllers, and views
+
+Handling environment configuration and API credentials securely
+
+Deploying and maintaining a live production application
+
+📂 Core Data Models
+
+User — authentication and personalization
+
+Movie / Show — normalized content data
+
+Watchlists / Favorites — user-specific relationships
+
+Associations are designed to support extensibility (recommendations, ratings, social features).
+
+🧪 Testing
+
+Model and feature tests written with RSpec
+
+Test data managed using FactoryBot
+
+API interactions mocked where appropriate
+
+⚙️ Local Setup
+Prerequisites
+
+Ruby
+
+Rails
+
+PostgreSQL
+
+API keys for TMDB and streaming service
 * ...
-# Auth
+# The Bonk
