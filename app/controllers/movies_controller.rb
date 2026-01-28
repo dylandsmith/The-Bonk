@@ -69,4 +69,9 @@ class MoviesController < ApplicationController
   def delete
   end
 
+  # add user recommended movie
+  def add_recommendation
+    
+  end
+
 end

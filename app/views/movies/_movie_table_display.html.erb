@@ -1,3 +1,4 @@
+<%  @user = Current.user %>
 <div id="my_bonks" class="city">
   <section class="display-header-container">
     <div class="display-header-grid">
@@ -28,23 +29,20 @@
             <% end %>
             <% end %>
           </div>
-          <div class="movie-line-item-fav" 
-                data-controller="favorites" 
-                data-action="click->favorites#addToFavorites" 
-                data-favorites-movie-id-param="<%= movie.id %>" 
-                data-favorites-user-id-param="<%= Current.user.id %>" 
-                data-favorites-fav-type-param="movie">
-            <% if (movie.favorites.exists? user_id: Current.user.id ) %>
-            <div class="favorite-movie">
-              <%= fa_icon 'thumbs-up', class: 'icon'%>
+          <% if @user %>
+            <div class="movie-line-item-fav" data-controller="favorites" data-action="click->favorites#addToFavorites" data-favorites-movie-id-param="<%= movie.id %>" data-favorites-user-id-param="<%= Current.user.id %>" data-favorites-fav-type-param="movie">
+              <% if (movie.favorites.exists? user_id: Current.user.id ) %>
+              <div class="favorite-movie">
+                <%= fa_icon 'thumbs-up', class: 'icon'%>
+              </div>
+              <% else %>
+              <div class="favorite-thumb">
+                <%= fa_icon 'thumbs-up', class: 'icon'%>
+              </div>
+              <% end %>
+              <%#= render partial: "movies/favorite_button", locals: { movie: movie.favoritable } %>
             </div>
-            <% else %>
-            <div class="favorite-thumb">
-              <%= fa_icon 'thumbs-up', class: 'icon'%>
-            </div>
-            <% end %>
-            <%#= render partial: "movies/favorite_button", locals: { movie: movie.favoritable } %>
-          </div>
+          <% end %>
       </summary>
       <%#= render "movies/watch_results", results: @result %>
       <div data-movie_listing_display-target="results"></div>

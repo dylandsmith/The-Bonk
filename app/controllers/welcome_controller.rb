@@ -1,36 +1,38 @@
 class WelcomeController < ApplicationController
 
-  @@search_results = []
+  @search_results = []
 
   #before_action :get_popular_flops
-  
   def index
     # binding.pry
-    if @@search_results.empty?
+    # if @search_results.empty?
       # if Current.user
         # @user_favorites = Current.user.favorites.each{|f| f.favoritable}
         # @user_favorites = []
         # @loggedin_movies = @user_favorites.each { |f| f.favoritable }
         # binding.pry
-        get_users_mentions
+        if Current.user
+          get_users_mentions
+        end
       # else
+        @movies = Movie.includes(:favorites).search(params[:query])
         @popular_flops = []
         @popular_flops_hash = {}
         @popular_flops = Favorite.all.uniq { |f| f.favoritable_id }
       # end
-      @movies = Movie.includes(:posts).all
-    else
-      @movies = @@search_results
-    end
+      # @movies = Movie.includes(:favorites).all
+    # else
+    #   @movies = @search_results
+    # end
     # binding.pry
     # render partial: "movies/tabbed_content", locals: { movies: @movies }
   end
 
-def get_user_favorites
-  @movies = Current.user.favorite_movies
+  def get_user_favorites
+    @movies = Current.user.favorite_movies
 
-  render partial: "movies/tabbed_content", locals: { movies: @movies }
-end
+    render partial: "movies/tabbed_content", locals: { movies: @movies }
+  end
 
 
   def get_popular_flops_json
@@ -63,7 +65,7 @@ end
 
   def search_movies
     # binding.pry
-    @@search_results = Movie.search_movies(params[:query])
+    @search_results = Movie.search_movies(params[:query])
     @popular_flops = []
     @popular_flops_hash = {}
     @popular_flops = Favorite.all.uniq { |f| f.favoritable_id }
@@ -72,7 +74,7 @@ end
   end
 
   def clear_search
-    @@search_results = []
+    @search_results = []
   end
 
   def recommendations
