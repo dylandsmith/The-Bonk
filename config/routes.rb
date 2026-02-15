@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   post '/favorite', to: 'favorites#create'
   get 'search_movies', to: 'search_movies#index', as: :search_movies
   get 'clear_search',  to: 'search_movies#clear', as: :clear_search
+  post '/recommendations', to: 'movies#add_recommendation', as: 'add_recommendation'
 
   # get 'password/edit'
   # get 'password/update'

@@ -1,6 +1,6 @@
 <div>
   <section class="welcome-main">
-    <%= form_with model: @movie do |form| %>
+    <%= form_with(url: add_recommendation_path, method: :post, model: @movie) do |form| %>
     <div class="movie-form">
       <div class="movie-form-title">
         <div class="form-group">

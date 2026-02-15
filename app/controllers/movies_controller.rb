@@ -71,7 +71,16 @@ class MoviesController < ApplicationController
 
   # add user recommended movie
   def add_recommendation
-    
+    binding.pry
+    recommendation = Current.user.recommendations.new(movie_id: params[:movie_id], reason: params[:reason])
+    recommendation.assign_attributes(recommendation_params)
+    if recommendation.save
+      
+    end
   end
+    private
 
+    def recommendation_params
+      params.require(:movie).permit(:title, :year, :content_rating, :plot)
+    end
 end
